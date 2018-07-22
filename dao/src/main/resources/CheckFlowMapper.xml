@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.CheckFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.jd.m.cms.bjshare.domain.po.CheckFlow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="node" property="node" jdbcType="INTEGER" />
+    <result column="check_erp" property="checkErp" jdbcType="VARCHAR" />
+    <result column="check_comment" property="checkComment" jdbcType="VARCHAR" />
+    <result column="check_result" property="checkResult" jdbcType="INTEGER" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="last_check_person" property="lastCheckPerson" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, node, check_erp, check_comment, check_result, activity_id, last_check_person, 
+    create_time, modify_time, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlowExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from check_flow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from check_flow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from check_flow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlowExample" >
+    delete from check_flow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlow" >
+    insert into check_flow (id, node, check_erp,
+      check_comment, check_result, activity_id, 
+      last_check_person, create_time, modify_time, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{node,jdbcType=INTEGER}, #{checkErp,jdbcType=VARCHAR},
+      #{checkComment,jdbcType=VARCHAR}, #{checkResult,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, 
+      #{lastCheckPerson,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlow" >
+    insert into check_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="node != null" >
+        node,
+      </if>
+      <if test="checkErp != null" >
+        check_erp,
+      </if>
+      <if test="checkComment != null" >
+        check_comment,
+      </if>
+      <if test="checkResult != null" >
+        check_result,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="lastCheckPerson != null" >
+        last_check_person,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="node != null" >
+        #{node,jdbcType=INTEGER},
+      </if>
+      <if test="checkErp != null" >
+        #{checkErp,jdbcType=VARCHAR},
+      </if>
+      <if test="checkComment != null" >
+        #{checkComment,jdbcType=VARCHAR},
+      </if>
+      <if test="checkResult != null" >
+        #{checkResult,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="lastCheckPerson != null" >
+        #{lastCheckPerson,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlowExample" resultType="java.lang.Integer" >
+    select count(*) from check_flow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update check_flow
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.node != null" >
+        node = #{record.node,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkErp != null" >
+        check_erp = #{record.checkErp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkComment != null" >
+        check_comment = #{record.checkComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkResult != null" >
+        check_result = #{record.checkResult,jdbcType=INTEGER},
+      </if>
+      <if test="record.activityId != null" >
+        activity_id = #{record.activityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastCheckPerson != null" >
+        last_check_person = #{record.lastCheckPerson,jdbcType=TINYINT},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null" >
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update check_flow
+    set id = #{record.id,jdbcType=INTEGER},
+      node = #{record.node,jdbcType=INTEGER},
+      check_erp = #{record.checkErp,jdbcType=VARCHAR},
+      check_comment = #{record.checkComment,jdbcType=VARCHAR},
+      check_result = #{record.checkResult,jdbcType=INTEGER},
+      activity_id = #{record.activityId,jdbcType=INTEGER},
+      last_check_person = #{record.lastCheckPerson,jdbcType=TINYINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <!--根据活动id和erp更新流程-->
+  <update id="updateByActivityIdSelective" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlow" >
+    update check_flow
+    <set >
+      <if test="node != null" >
+        node = #{node,jdbcType=INTEGER},
+      </if>
+      <if test="checkComment != null" >
+        check_comment = #{checkComment,jdbcType=VARCHAR},
+      </if>
+      <if test="checkResult != null" >
+        check_result = #{checkResult,jdbcType=INTEGER},
+      </if>
+      <if test="lastCheckPerson != null" >
+        last_check_person = #{lastCheckPerson,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where activity_id = #{activityId,jdbcType=INTEGER} and check_erp = #{checkErp,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlow" >
+    update check_flow
+    <set >
+      <if test="node != null" >
+        node = #{node,jdbcType=INTEGER},
+      </if>
+      <if test="checkErp != null" >
+        check_erp = #{checkErp,jdbcType=VARCHAR},
+      </if>
+      <if test="checkComment != null" >
+        check_comment = #{checkComment,jdbcType=VARCHAR},
+      </if>
+      <if test="checkResult != null" >
+        check_result = #{checkResult,jdbcType=INTEGER},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="lastCheckPerson != null" >
+        last_check_person = #{lastCheckPerson,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jd.m.cms.bjshare.domain.po.CheckFlow" >
+    update check_flow
+    set node = #{node,jdbcType=INTEGER},
+      check_erp = #{checkErp,jdbcType=VARCHAR},
+      check_comment = #{checkComment,jdbcType=VARCHAR},
+      check_result = #{checkResult,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      last_check_person = #{lastCheckPerson,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

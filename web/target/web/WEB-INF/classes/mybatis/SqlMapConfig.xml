@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+
+    <!--&lt;!&ndash; 别名定义 &ndash;&gt;-->
+    <!--<typeAliases>-->
+        <!--&lt;!&ndash; 批量别名定义,指定包名，mybatis自动扫描包中的po类，自动定义别名，别名是类名(首字母大写或小写都可以,一般用小写) &ndash;&gt;-->
+        <!--<package name="com.jd.m.cms.bjshare.domain.po" />-->
+    <!--</typeAliases>-->
+    <typeAliases>
+        <typeAlias alias="ShareActivity" type="com.jd.m.cms.bjshare.domain.po.ShareActivity"/>
+        <typeAlias alias="ShareRule" type="com.jd.m.cms.bjshare.domain.po.ShareRule"/>
+        <typeAlias alias="ShareContent" type="com.jd.m.cms.bjshare.domain.po.ShareContent"/>
+        <typeAlias alias="ActivityDataStatistical" type="com.jd.m.cms.bjshare.domain.po.ActivityDataStatistical"/>
+        <typeAlias alias="ShareActivityOrderStatistics" type="com.jd.m.cms.bjshare.domain.po.ShareActivityOrderStatistics"/>
+    </typeAliases>
+
+    <plugins>
+        <!-- 配置分页助手 -->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql" />
+            <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+            <property name="rowBoundsWithCount" value="true" />
+        </plugin>
+    </plugins>
+
+</configuration>

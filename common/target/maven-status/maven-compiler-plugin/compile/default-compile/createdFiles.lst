@@ -1,0 +1,5 @@
+com\jd\m\cms\bjshare\common\utils\BeanUtil.class
+com\jd\m\cms\bjshare\common\spring\JsfException.class
+com\jd\m\cms\bjshare\common\result\ResultCode.class
+com\jd\m\cms\bjshare\common\result\ResultData.class
+com\jd\m\cms\bjshare\common\utils\DateUtil.class

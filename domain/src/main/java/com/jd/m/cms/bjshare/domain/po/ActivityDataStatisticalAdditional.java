@@ -1,0 +1,125 @@
+package com.jd.m.cms.bjshare.domain.po;
+
+import java.util.Date;
+
+public class ActivityDataStatisticalAdditional {
+    private Integer id;
+
+    private Integer statisticalId;
+
+    private Integer shareSuccessUv;
+
+    private Integer shareOpenNum;
+
+    private Integer sharedOpenNum;
+
+    private Integer shareOpenUv;
+
+    private Integer sharedOpenUv;
+
+    private String reserve1;
+
+    private String reserve2;
+
+    private String reserve3;
+
+    private Date createTime;
+
+    private Byte status;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getStatisticalId() {
+        return statisticalId;
+    }
+
+    public void setStatisticalId(Integer statisticalId) {
+        this.statisticalId = statisticalId;
+    }
+
+    public Integer getShareSuccessUv() {
+        return shareSuccessUv;
+    }
+
+    public void setShareSuccessUv(Integer shareSuccessUv) {
+        this.shareSuccessUv = shareSuccessUv;
+    }
+
+    public Integer getShareOpenNum() {
+        return shareOpenNum;
+    }
+
+    public void setShareOpenNum(Integer shareOpenNum) {
+        this.shareOpenNum = shareOpenNum;
+    }
+
+    public Integer getSharedOpenNum() {
+        return sharedOpenNum;
+    }
+
+    public void setSharedOpenNum(Integer sharedOpenNum) {
+        this.sharedOpenNum = sharedOpenNum;
+    }
+
+    public Integer getShareOpenUv() {
+        return shareOpenUv;
+    }
+
+    public void setShareOpenUv(Integer shareOpenUv) {
+        this.shareOpenUv = shareOpenUv;
+    }
+
+    public Integer getSharedOpenUv() {
+        return sharedOpenUv;
+    }
+
+    public void setSharedOpenUv(Integer sharedOpenUv) {
+        this.sharedOpenUv = sharedOpenUv;
+    }
+
+    public String getReserve1() {
+        return reserve1;
+    }
+
+    public void setReserve1(String reserve1) {
+        this.reserve1 = reserve1 == null ? null : reserve1.trim();
+    }
+
+    public String getReserve2() {
+        return reserve2;
+    }
+
+    public void setReserve2(String reserve2) {
+        this.reserve2 = reserve2 == null ? null : reserve2.trim();
+    }
+
+    public String getReserve3() {
+        return reserve3;
+    }
+
+    public void setReserve3(String reserve3) {
+        this.reserve3 = reserve3 == null ? null : reserve3.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+}

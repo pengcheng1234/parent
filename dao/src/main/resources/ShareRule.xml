@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.ShareRuleDao" >
+  <resultMap id="BaseResultMap" type="ShareRule" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="BIGINT" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="modify_date" property="modifyDate" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="activity_id" property="activityId" jdbcType="BIGINT" />
+    <result column="reward_person" property="rewardPerson" jdbcType="TINYINT" />
+    <result column="reward_rule_category" property="rewardRuleCategory" jdbcType="BIGINT" />
+    <result column="reward_type" property="rewardType" jdbcType="TINYINT" />
+    <result column="prize_quota" property="prizeQuota" jdbcType="INTEGER" />
+    <result column="prize_quota_day" property="prizeQuotaDay" jdbcType="INTEGER" />
+    <result column="prize_quota_time" property="prizeQuotaTime" jdbcType="INTEGER" />
+    <result column="coupon_id" property="couponId" jdbcType="VARCHAR" />
+      <result column="bean_plan_id" property="beanPlanId" jdbcType="BIGINT" />
+      <result column="coupon_name" property="couponName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, creator, create_time, create_date, modifier, modify_time, modify_date, is_delete,
+    activity_id, reward_person, reward_rule_category, reward_type, prize_quota, prize_quota_day,
+    prize_quota_time, coupon_id, bean_plan_id, coupon_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from share_rule
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from share_rule
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insertSelective" parameterType="ShareRule" keyProperty="id" useGeneratedKeys="true" >
+    insert into share_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="rewardPerson != null" >
+        reward_person,
+      </if>
+      <if test="rewardRuleCategory != null" >
+          reward_rule_category,
+      </if>
+      <if test="rewardType != null" >
+        reward_type,
+      </if>
+      <if test="prizeQuota != null" >
+        prize_quota,
+      </if>
+      <if test="prizeQuotaDay != null" >
+        prize_quota_day,
+      </if>
+      <if test="prizeQuotaTime != null" >
+        prize_quota_time,
+      </if>
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+        <if test="beanPlanId != null" >
+            bean_plan_id,
+        </if>
+        <if test="couponName != null" >
+            coupon_name,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=BIGINT},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="rewardPerson != null" >
+        #{rewardPerson,jdbcType=TINYINT},
+      </if>
+      <if test="rewardRuleCategory != null" >
+        #{rewardRuleCategory,jdbcType=BIGINT},
+      </if>
+      <if test="rewardType != null" >
+        #{rewardType,jdbcType=TINYINT},
+      </if>
+      <if test="prizeQuota != null" >
+        #{prizeQuota,jdbcType=INTEGER},
+      </if>
+      <if test="prizeQuotaDay != null" >
+        #{prizeQuotaDay,jdbcType=INTEGER},
+      </if>
+      <if test="prizeQuotaTime != null" >
+        #{prizeQuotaTime,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=VARCHAR},
+      </if>
+        <if test="beanPlanId != null" >
+            #{beanPlanId,jdbcType=BIGINT},
+        </if>
+        <if test="couponName != null" >
+            #{couponName,jdbcType=VARCHAR},
+        </if>
+    </trim>
+  </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="ShareRule" >
+    update share_rule
+    <set >
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        create_data = #{createDate,jdbcType=BIGINT},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="rewardPerson != null" >
+        reward_person = #{rewardPerson,jdbcType=TINYINT},
+      </if>
+      <if test="rewardRuleCategory != null" >
+          reward_rule_category = #{rewardRuleCategory,jdbcType=BIGINT},
+      </if>
+      <if test="rewardType != null" >
+        reward_type = #{rewardType,jdbcType=TINYINT},
+      </if>
+      <if test="prizeQuota != null" >
+        prize_quota = #{prizeQuota,jdbcType=INTEGER},
+      </if>
+      <if test="prizeQuotaDay != null" >
+        prize_quota_day = #{prizeQuotaDay,jdbcType=INTEGER},
+      </if>
+      <if test="prizeQuotaTime != null" >
+        prize_quota_time = #{prizeQuotaTime,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        coupon_id = #{couponId,jdbcType=VARCHAR},
+      </if>
+        <if test="beanPlanId != null" >
+            bean_plan_id = #{beanPlanId,jdbcType=BIGINT},
+        </if>
+        <if test="couponName != null" >
+            coupon_name = #{couponName,jdbcType=VARCHAR},
+        </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <!--批量插入奖励规则 -->
+    <insert id="insertShareRulePatch" parameterType="java.util.List">
+        insert into share_rule (id, creator, create_time,
+      create_date, modifier, modify_time,
+      modify_date, is_delete, activity_id,
+      reward_person, reward_rule_category, reward_type,
+      prize_quota, prize_quota_day, prize_quota_time,
+      coupon_id,bean_plan_id,coupon_name)
+    values
+        <foreach collection="list" item="item" index="index" separator="," >
+    (#{item.id,jdbcType=BIGINT}, #{item.creator,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP},
+      #{item.createDate,jdbcType=BIGINT}, #{item.modifier,jdbcType=VARCHAR}, #{item.modifyTime,jdbcType=TIMESTAMP},
+      #{item.modifyDate,jdbcType=BIGINT}, #{item.isDelete,jdbcType=BIT}, #{item.activityId,jdbcType=BIGINT},
+      #{item.rewardPerson,jdbcType=TINYINT}, #{item.rewardRuleCategory,jdbcType=BIGINT}, #{item.rewardType,jdbcType=TINYINT},
+      #{item.prizeQuota,jdbcType=INTEGER}, #{item.prizeQuotaDay,jdbcType=INTEGER}, #{item.prizeQuotaTime,jdbcType=INTEGER},
+      #{item.couponId,jdbcType=VARCHAR},#{item.beanPlanId,jdbcType=BIGINT},#{item.couponName,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+
+  <!--奖励对象-->
+  <resultMap id="ShareRuleMap" type="com.jd.m.cms.bjshare.domain.vo.ShareRuleVo" extends="BaseResultMap">
+    <result property="callerCode" column="caller_code"/>
+    <result property="key" column="key"/>
+    <result property="businessCode" column="business_code"/>
+    <result property="topBusinessId" column="top_business_id"/>
+    <result property="secondBusinessId" column="second_business_id"/>
+    <result property="orgId" column="org_id"/>
+  </resultMap>
+  <!-- 查询活动关联的奖励规则-->
+  <select id="queryShareRuleInfo" resultMap="ShareRuleMap" parameterType="java.util.Map">
+        SELECT sr.*,sra.caller_code,sra.key,sra.business_code,sra.top_business_id,sra.top_business_id,sra.second_business_id,sra.org_id
+        from share_rule sr
+        left JOIN share_rule_additional sra on sr.id = sra.share_rule_id
+        where sr.activity_id = #{activity_id,jdbcType=BIGINT}
+   </select>
+
+</mapper>

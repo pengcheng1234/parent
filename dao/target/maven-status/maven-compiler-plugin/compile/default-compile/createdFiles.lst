@@ -1,0 +1,11 @@
+com\jd\m\cms\bjshare\dao\ShareActivityOrderStatisticsDao.class
+com\jd\m\cms\bjshare\dao\ShareRuleAdditionalMapper.class
+com\jd\m\cms\bjshare\dao\SelfItemCateMapper.class
+com\jd\m\cms\bjshare\dao\ActivityDataStatisticalAdditionalMapper.class
+com\jd\m\cms\bjshare\dao\ShareRuleDao.class
+com\jd\m\cms\bjshare\dao\ShareActivityDao.class
+com\jd\m\cms\bjshare\dao\ActivityDataStatisticalDao.class
+com\jd\m\cms\bjshare\dao\OperaterListMapper.class
+com\jd\m\cms\bjshare\dao\CheckFlowMapper.class
+com\jd\m\cms\bjshare\dao\ShareContentDao.class
+com\jd\m\cms\bjshare\dao\ShareActivityAdditionalMapper.class

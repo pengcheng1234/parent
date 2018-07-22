@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.SelfItemCateMapper">
+    <resultMap id="BaseResultMap" type="com.jd.m.cms.bjshare.domain.po.SelfItemCate">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="saler_erp_acct" property="salerErpAcct" jdbcType="VARCHAR"/>
+        <result column="sale_staf_name" property="saleStafName" jdbcType="VARCHAR"/>
+        <result column="item_first_cate_cd" property="itemFirstCateCd" jdbcType="INTEGER"/>
+        <result column="item_first_cate_name" property="itemFirstCateName" jdbcType="VARCHAR"/>
+        <result column="item_second_cate_cd" property="itemSecondCateCd" jdbcType="INTEGER"/>
+        <result column="item_second_cate_name" property="itemSecondCateName" jdbcType="VARCHAR"/>
+        <result column="item_third_cate_cd" property="itemThirdCateCd" jdbcType="INTEGER"/>
+        <result column="item_third_cate_name" property="itemThirdCateName" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, saler_erp_acct, sale_staf_name, item_first_cate_cd, item_first_cate_name, item_second_cate_cd, 
+    item_second_cate_name, item_third_cate_cd, item_third_cate_name, create_time
+  </sql>
+
+    <!--根据父节点查询子节点-->
+    <select id="selectByParentCode" resultType="com.jd.m.cms.bjshare.domain.vo.CodeAndName" parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCate">
+        select
+        <if test="itemFirstCateCd == null and itemSecondCateCd==null">
+            item_first_cate_cd code,item_first_cate_name name
+        </if>
+        <if test=" itemFirstCateCd !=null ">
+            item_second_cate_cd code,item_second_cate_name name
+        </if>
+        <if test="itemSecondCateCd !=null">
+            item_third_cate_cd code,item_third_cate_name name
+        </if>
+        from self_item_cate
+        <where>
+            <if test="itemFirstCateCd == null and itemSecondCateCd==null">
+                and item_first_cate_cd is not null
+            </if>
+            <if test=" itemFirstCateCd !=null ">
+                and item_first_cate_cd =#{itemFirstCateCd}
+            </if>
+            <if test="itemSecondCateCd !=null">
+                and item_second_cate_cd =#{itemSecondCateCd}
+            </if>
+            <if test="salerErpAcct !=null">
+                and saler_erp_acct =#{salerErpAcct}
+            </if>
+        </where>
+            GROUP  BY CODE,NAME
+    </select>
+
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCateExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from self_item_cate
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from self_item_cate
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from self_item_cate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCateExample">
+        delete from self_item_cate
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCate">
+    insert into self_item_cate (id, saler_erp_acct, sale_staf_name, 
+      item_first_cate_cd, item_first_cate_name, item_second_cate_cd, 
+      item_second_cate_name, item_third_cate_cd, item_third_cate_name, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{salerErpAcct,jdbcType=VARCHAR}, #{saleStafName,jdbcType=VARCHAR}, 
+      #{itemFirstCateCd,jdbcType=INTEGER}, #{itemFirstCateName,jdbcType=VARCHAR}, #{itemSecondCateCd,jdbcType=INTEGER}, 
+      #{itemSecondCateName,jdbcType=VARCHAR}, #{itemThirdCateCd,jdbcType=INTEGER}, #{itemThirdCateName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCate">
+        insert into self_item_cate
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="salerErpAcct != null">
+                saler_erp_acct,
+            </if>
+            <if test="saleStafName != null">
+                sale_staf_name,
+            </if>
+            <if test="itemFirstCateCd != null">
+                item_first_cate_cd,
+            </if>
+            <if test="itemFirstCateName != null">
+                item_first_cate_name,
+            </if>
+            <if test="itemSecondCateCd != null">
+                item_second_cate_cd,
+            </if>
+            <if test="itemSecondCateName != null">
+                item_second_cate_name,
+            </if>
+            <if test="itemThirdCateCd != null">
+                item_third_cate_cd,
+            </if>
+            <if test="itemThirdCateName != null">
+                item_third_cate_name,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="salerErpAcct != null">
+                #{salerErpAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="saleStafName != null">
+                #{saleStafName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemFirstCateCd != null">
+                #{itemFirstCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemFirstCateName != null">
+                #{itemFirstCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemSecondCateCd != null">
+                #{itemSecondCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemSecondCateName != null">
+                #{itemSecondCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemThirdCateCd != null">
+                #{itemThirdCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemThirdCateName != null">
+                #{itemThirdCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCateExample"
+            resultType="java.lang.Integer">
+        select count(*) from self_item_cate
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update self_item_cate
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.salerErpAcct != null">
+                saler_erp_acct = #{record.salerErpAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="record.saleStafName != null">
+                sale_staf_name = #{record.saleStafName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.itemFirstCateCd != null">
+                item_first_cate_cd = #{record.itemFirstCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.itemFirstCateName != null">
+                item_first_cate_name = #{record.itemFirstCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.itemSecondCateCd != null">
+                item_second_cate_cd = #{record.itemSecondCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.itemSecondCateName != null">
+                item_second_cate_name = #{record.itemSecondCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.itemThirdCateCd != null">
+                item_third_cate_cd = #{record.itemThirdCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.itemThirdCateName != null">
+                item_third_cate_name = #{record.itemThirdCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update self_item_cate
+        set id = #{record.id,jdbcType=INTEGER},
+        saler_erp_acct = #{record.salerErpAcct,jdbcType=VARCHAR},
+        sale_staf_name = #{record.saleStafName,jdbcType=VARCHAR},
+        item_first_cate_cd = #{record.itemFirstCateCd,jdbcType=INTEGER},
+        item_first_cate_name = #{record.itemFirstCateName,jdbcType=VARCHAR},
+        item_second_cate_cd = #{record.itemSecondCateCd,jdbcType=INTEGER},
+        item_second_cate_name = #{record.itemSecondCateName,jdbcType=VARCHAR},
+        item_third_cate_cd = #{record.itemThirdCateCd,jdbcType=INTEGER},
+        item_third_cate_name = #{record.itemThirdCateName,jdbcType=VARCHAR},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCate">
+        update self_item_cate
+        <set>
+            <if test="salerErpAcct != null">
+                saler_erp_acct = #{salerErpAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="saleStafName != null">
+                sale_staf_name = #{saleStafName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemFirstCateCd != null">
+                item_first_cate_cd = #{itemFirstCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemFirstCateName != null">
+                item_first_cate_name = #{itemFirstCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemSecondCateCd != null">
+                item_second_cate_cd = #{itemSecondCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemSecondCateName != null">
+                item_second_cate_name = #{itemSecondCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="itemThirdCateCd != null">
+                item_third_cate_cd = #{itemThirdCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemThirdCateName != null">
+                item_third_cate_name = #{itemThirdCateName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jd.m.cms.bjshare.domain.po.SelfItemCate">
+    update self_item_cate
+    set saler_erp_acct = #{salerErpAcct,jdbcType=VARCHAR},
+      sale_staf_name = #{saleStafName,jdbcType=VARCHAR},
+      item_first_cate_cd = #{itemFirstCateCd,jdbcType=INTEGER},
+      item_first_cate_name = #{itemFirstCateName,jdbcType=VARCHAR},
+      item_second_cate_cd = #{itemSecondCateCd,jdbcType=INTEGER},
+      item_second_cate_name = #{itemSecondCateName,jdbcType=VARCHAR},
+      item_third_cate_cd = #{itemThirdCateCd,jdbcType=INTEGER},
+      item_third_cate_name = #{itemThirdCateName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

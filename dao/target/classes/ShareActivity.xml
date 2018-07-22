@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.ShareActivityDao" >
+  <resultMap id="BaseResultMap" type="ShareActivity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="BIGINT" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="modify_date" property="modifyDate" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="auditor" property="auditor" jdbcType="VARCHAR" />
+    <result column="audit_status" property="auditStatus" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="BIGINT" />
+    <result column="source" property="source" jdbcType="TINYINT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="start_date" property="startDate" jdbcType="BIGINT" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="BIGINT" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="match_type" property="matchType" jdbcType="TINYINT" />
+    <result column="biz_ids" property="bizIds" jdbcType="VARCHAR" />
+    <result column="share_reward_limit" property="shareRewardLimit" jdbcType="BIGINT" />
+    <result column="share_reward_limit_day" property="shareRewardLimitDay" jdbcType="BIGINT" />
+    <result column="view_reward_limit" property="viewRewardLimit" jdbcType="INTEGER" />
+    <result column="view_reward_limit_day" property="viewRewardLimitDay" jdbcType="INTEGER" />
+    <result column="shop_id" property="shopId" jdbcType="VARCHAR" />
+    <result column="activity_name" property="activityName" jdbcType="VARCHAR" />
+    <result column="vender_id" property="venderId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, creator, create_time, create_date, modifier, modify_time, modify_date, is_delete,
+    auditor, audit_status, type, source, start_time, start_date, end_time, end_date, 
+    image, status, match_type, biz_ids, share_reward_limit, share_reward_limit_day, view_reward_limit, 
+    view_reward_limit_day, shop_id, activity_name,vender_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from share_activity
+    where is_delete = 0
+    and id = #{id,jdbcType=BIGINT}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from share_activity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="ShareActivity" keyProperty="id" useGeneratedKeys="true" >
+    insert into share_activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="auditor != null" >
+        auditor,
+      </if>
+      <if test="auditStatus != null" >
+        audit_status,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="matchType != null" >
+        match_type,
+      </if>
+      <if test="bizIds != null" >
+        biz_ids,
+      </if>
+      <if test="shareRewardLimit != null" >
+        share_reward_limit,
+      </if>
+      <if test="shareRewardLimitDay != null" >
+        share_reward_limit_day,
+      </if>
+      <if test="viewRewardLimit != null" >
+        view_reward_limit,
+      </if>
+      <if test="viewRewardLimitDay != null" >
+        view_reward_limit_day,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+        <if test="activityName != null" >
+            activity_name,
+        </if>
+        <if test="venderId != null" >
+            vender_id,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=BIGINT},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="auditor != null" >
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null" >
+        #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=TINYINT},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=BIGINT},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=BIGINT},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="matchType != null" >
+        #{matchType,jdbcType=TINYINT},
+      </if>
+      <if test="bizIds != null" >
+        #{bizIds,jdbcType=VARCHAR},
+      </if>
+      <if test="shareRewardLimit != null" >
+        #{shareRewardLimit,jdbcType=BIGINT},
+      </if>
+      <if test="shareRewardLimitDay != null" >
+        #{shareRewardLimitDay,jdbcType=BIGINT},
+      </if>
+      <if test="viewRewardLimit != null" >
+        #{viewRewardLimit,jdbcType=INTEGER},
+      </if>
+      <if test="viewRewardLimitDay != null" >
+        #{viewRewardLimitDay,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=VARCHAR},
+      </if>
+        <if test="activityName != null" >
+            #{activityName,jdbcType=VARCHAR},
+        </if>
+        <if test="venderId != null" >
+            #{venderId,jdbcType=BIGINT},
+        </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="ShareActivity" >
+    update share_activity
+    <set >
+      <if test="creator != null and creator != ''" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=BIGINT},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="auditor != null" >
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="auditStatus != null" >
+        audit_status = #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=TINYINT},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=BIGINT},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=BIGINT},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="matchType != null" >
+        match_type = #{matchType,jdbcType=TINYINT},
+      </if>
+      <if test="bizIds != null" >
+        biz_ids = #{bizIds,jdbcType=VARCHAR},
+      </if>
+      <if test="shareRewardLimit != null" >
+        share_reward_limit = #{shareRewardLimit,jdbcType=BIGINT},
+      </if>
+      <if test="shareRewardLimitDay != null" >
+        share_reward_limit_day = #{shareRewardLimitDay,jdbcType=BIGINT},
+      </if>
+      <if test="viewRewardLimit != null" >
+        view_reward_limit = #{viewRewardLimit,jdbcType=INTEGER},
+      </if>
+      <if test="viewRewardLimitDay != null" >
+        view_reward_limit_day = #{viewRewardLimitDay,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=VARCHAR},
+      </if>
+        <if test="activityName != null and activityName != ''" >
+            activity_name = #{activityName,jdbcType=VARCHAR},
+        </if>
+        <if test="venderId != null and activityName != ''" >
+            vender_id = #{venderId,jdbcType=BIGINT},
+        </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <!-- 修改活动状态 -->
+    <update id="updateActivityStatu" parameterType="java.util.Map">
+        update share_activity
+        set status = #{status,jdbcType=TINYINT}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!-- 查询活动列表 -->
+    <select id="queryActivityList" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT <include refid="Base_Column_List" />
+        from share_activity sa
+        where 1=1
+        <if test="venderId != null" >
+            and sa.vender_id = #{venderId,jdbcType=BIGINT}
+        </if>
+        <if test="activityName != null and activityName !=''" >
+            and sa.activity_name like CONCAT(CONCAT('%', #{activityName}), '%')
+        </if>
+        <if test="id != null and id !=''" >
+            and sa.id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="type != null and type !=''" >
+            and sa.type = #{type,jdbcType=BIGINT}
+        </if>
+        <if test="status != null and status == -1" >
+            and sa.status in (0,1,2)
+        </if>
+        <if test="status != null and status != -1" >
+            and sa.status = #{status,jdbcType=TINYINT}
+        </if>
+        <if test="createStartStr != null and createStartStr !='' and createEndStr != null and createEndStr !=''" >
+            and sa.create_time BETWEEN #{createStartStr,jdbcType=TIMESTAMP} AND #{createEndStr,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createStartStr != null and createStartStr !=''" >
+            and sa.create_time > #{createStartStr,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createEndStr != null and createEndStr !=''" >
+            and  #{createEndStr,jdbcType=TIMESTAMP} > sa.create_time
+        </if>
+        order by sa.create_time desc
+    </select>
+
+    <resultMap id="DetailResultMap" type="com.jd.m.cms.bjshare.domain.vo.AddActivityVo" extends="BaseResultMap">
+        <collection property="shareRuleList" ofType="ShareRule">
+            <result column="reward_person" property="rewardPerson" jdbcType="TINYINT" />
+            <result column="reward_rule_category" property="rewardRuleCategory" jdbcType="BIGINT" />
+            <result column="reward_type" property="rewardType" jdbcType="TINYINT" />
+            <result column="prize_quota" property="prizeQuota" jdbcType="INTEGER" />
+            <result column="prize_quota_day" property="prizeQuotaDay" jdbcType="INTEGER" />
+            <result column="prize_quota_time" property="prizeQuotaTime" jdbcType="INTEGER" />
+            <result column="coupon_id" property="couponId" jdbcType="VARCHAR" />
+        </collection>
+    </resultMap>
+
+    <!-- 查询活动详情 pop-->
+    <select id="queryActivityDetail" resultMap="DetailResultMap" parameterType="java.lang.Long">
+        SELECT sa.*,sr.reward_person,sr.reward_rule_category,sr.reward_type,sr.prize_quota,sr.prize_quota_day,sr.prize_quota_time,sr.coupon_id
+        from share_activity sa
+        INNER JOIN share_rule sr on sa.id = sr.activity_id
+        where sa.is_delete = 0
+        and sr.is_delete = 0
+        and sa.id = #{id,jdbcType=BIGINT}
+        order by sr.reward_person asc
+    </select>
+
+    <!-- 查询该venderId已创建活动的spu和venderId -->
+    <select id="queryExistBiz" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select s.match_type, GROUP_CONCAT(DISTINCT s.biz_ids SEPARATOR ',') biz_ids from
+        share_activity s
+        where s.is_delete = 0 and s.status != 2
+        <if test="venderId != null" >
+            and s.vender_id = #{venderId,jdbcType=BIGINT}
+        </if>
+        <if test="matchType != null" >
+            and s.match_type = #{matchType,jdbcType=TINYINT}
+        </if>
+        and  #{endDate,jdbcType=BIGINT} > s.start_date
+        and s.end_date > #{startDate,jdbcType=BIGINT}
+        group by s.match_type
+    </select>
+
+  <!-- 查询不同的shopid数量 -->
+  <select id="queryDistinctShopId" resultType="java.lang.String" >
+    SELECT DISTINCT(shop_id) FROM share_activity
+  </select>
+
+  <!-- **************************************自营数据查询*************************** -->
+  <!--活动详情-->
+  <resultMap id="ActivityFullInfoMap" type="com.jd.m.cms.bjshare.domain.vo.ActivityFullInfoVo" extends="BaseResultMap">
+    <result property="produceClassify" column="produce_classify"/>
+    <result property="produceClassifyCn" column="produce_classify_cn"/>
+    <result property="activityType" column="activity_type"/>
+    <result property="shopName" column="shop_name"/>
+    <result property="invalidSku" column="invalid_sku"/>
+    <result property="effectiveSku" column="effective_sku"/>
+    <result property="sku" column="sku"/>
+  </resultMap>
+  <!-- 查询活动详情-->
+  <select id="queryActivityFullInfo" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
+        SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name,saa.invalid_sku,saa.effective_sku,saa.sku
+        from share_activity sa
+        left JOIN share_activity_additional saa on sa.id = saa.activity_id
+        where sa.is_delete = 0
+        and sa.id = #{id,jdbcType=BIGINT}
+        <if test="creator != null" >
+            and sa.creator =  #{creator,jdbcType=VARCHAR}
+        </if>
+   </select>
+
+  <!-- 查询活动列表 -->
+  <select id="queryActivityFullInfoList" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
+    SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name
+    from share_activity sa
+    left JOIN share_activity_additional saa on sa.id = saa.activity_id
+    where sa.is_delete = 0
+    <if test="creator != null and creator !=''" >
+       AND sa.creator IN
+      <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+        #{creator}
+      </foreach>
+    </if>
+    <if test="activityName != null and activityName !=''" >
+      and sa.activity_name like CONCAT(CONCAT('%', #{activityName}), '%')
+    </if>
+    <if test="id != null and id !=''" >
+      and sa.id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="type != null and type !=''" >
+      and sa.type = #{type,jdbcType=BIGINT}
+    </if>
+    <if test="status != null and status == -1" >
+      and sa.status in (0,1,2)
+    </if>
+    <if test="status != null and status != -1" >
+      and sa.status = #{status,jdbcType=TINYINT}
+    </if>
+    <if test="createStartStr != null and createStartStr !='' and createEndStr != null and createEndStr !=''" >
+      and sa.create_time BETWEEN #{createStartStr,jdbcType=TIMESTAMP} AND #{createEndStr,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createStartStr != null and createStartStr !=''" >
+      and sa.create_time > #{createStartStr,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createEndStr != null and createEndStr !=''" >
+      and  #{createEndStr,jdbcType=TIMESTAMP} > sa.create_time
+    </if>
+    order by sa.create_time desc
+  </select>
+
+  <!--sku是否已经参加了活动-->
+  <select id="skuIsInActivity" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
+    SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name
+    from share_activity sa
+    left JOIN share_activity_additional saa on sa.id = saa.activity_id
+    where sa.is_delete = 0 and sa.status !=2 and
+       find_in_set(#sku#,saa.sku)
+  </select>
+
+  <!--bizId是否已经参加了活动-->
+  <select id="bizIdIsInActivity" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
+    SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name
+    from share_activity sa
+    left JOIN share_activity_additional saa on sa.id = saa.activity_id
+    where sa.is_delete = 0 and sa.status !=2 and
+       find_in_set(#bizId#,sa.biz_ids)
+  </select>
+
+
+</mapper>
