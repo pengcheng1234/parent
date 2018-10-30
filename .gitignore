@@ -1,3 +1,19 @@
-/target
-.idea/workspace.xml
-.class
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+.project
+.idea/
+.classpath
+.settings
+*.iml
+
+**/target/
+**/target/
+**/target/
+**/target/
+**/target/
+**/target/
+**/target/
+**/target/
+**/yarn.lock
+**/package-lock.json
+*.class
