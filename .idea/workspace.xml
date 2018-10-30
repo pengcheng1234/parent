@@ -7,181 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="960083d7-75d3-474d-8f9f-3925ef150a0c" name="Default" comment="再提交readme.txt">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jd_common_jd_common_util_1_2_SNAPSHOT.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_2_7_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/com/jd/m/cms/bjshare/client/databoard/DataStatisticalJsfService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/com/jd/m/cms/bjshare/client/databoard/ExcelJsfService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/com/redis/JedisClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/bjshare/domain/StaticalBean.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/m/cms/bjshare/common/log/TraceLog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/m/cms/bjshare/common/log/TraceLogFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/m/cms/bjshare/common/utils/JsonUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/m/statistics/common/utils/DateUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/m/worker/bjshare/common/utils/JsonUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/CouponRecordMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ShareTaskDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/TagRecordMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/WhiteListMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/resources/CouponRecordMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/resources/ShareTaskMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/resources/TagRecordMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/resources/WhiteListMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/bjshare/domain/test.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/CouponRecord.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/CouponRecordExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/Role.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/TagRecord.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/TagRecordExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/WhiteList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/WhiteListExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/ActivityDataStatisticalExtend.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/PageInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/UvData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/export/excelShareActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/statistics/domain/Statistical.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/statistics/domain/StatisticalKey.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/statistics/domain/enums/RedisKeyEnum.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/domain/src/test/java/com/test/list.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/main/java/com/jd/m/bjshare/databoard/service/impl/DataStatisticalJsfServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/main/java/com/jd/m/bjshare/databoard/service/impl/DataStatisticalJsfServiceImplTemp.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/main/java/com/jd/m/bjshare/databoard/service/impl/ExcelServiceJspImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/main/java/com/jd/m/bjshare/whiteList/WhiteListService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/src/main/java/com/jd/m/redis/JedisClientPool.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/controller/DataStaticController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/controller/IndexController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/controller/WhiteListController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/exception/ShareException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/service/LoginService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/service/impl/LoginServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/util/RoleUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/resources/spring/applicationContext-redis.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/jsp/DataStatistical.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/test/java/com/reidisTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/test/java/com/staticClass.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/src/test/java/com/testlist.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/classes/spring/applicationContext-quartz.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/spring/applicationContext-quartz.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/commons-pool2-2.4.1.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/com/jd/m/cms/bjshare/client/activity/SelfItemCateJsfService.class" afterPath="$PROJECT_DIR$/client/target/classes/com/jd/m/cms/bjshare/client/activity/SelfItemCateJsfService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/client.jar" afterPath="$PROJECT_DIR$/client/target/client.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/com/jd/m/cms/bjshare/common/exportexcel/BatchExportToExcelUtil.class" afterPath="$PROJECT_DIR$/common/target/classes/com/jd/m/cms/bjshare/common/exportexcel/BatchExportToExcelUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/com/jd/m/cms/bjshare/common/result/ResultCode.class" afterPath="$PROJECT_DIR$/common/target/classes/com/jd/m/cms/bjshare/common/result/ResultCode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/common.jar" afterPath="$PROJECT_DIR$/common/target/common.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalAdditionalMapper.class" afterPath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalAdditionalMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalDao.class" afterPath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/SelfItemCateMapper.class" afterPath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/SelfItemCateMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ShareActivityAdditionalMapper.class" afterPath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ShareActivityAdditionalMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ShareActivityDao.class" afterPath="$PROJECT_DIR$/dao/target/classes/com/jd/m/cms/bjshare/dao/ShareActivityDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/dao.jar" afterPath="$PROJECT_DIR$/dao/target/dao.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizs.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizs.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample$Criteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample$Criterion.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample$Criterion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditional.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditional.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample$Criteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample$Criterion.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample$Criterion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditional.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditional.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample$Criteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample$Criterion.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample$Criterion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityOrderStatistics.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareActivityOrderStatistics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditional.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditional.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample$Criteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample$Criteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample$Criterion.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample$Criterion.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample$GeneratedCriteria.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample$GeneratedCriteria.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/vo/ActivityDataCountVo.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/vo/ActivityDataCountVo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/vo/CouponDataVo.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/vo/CouponDataVo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/vo/OrderDataVo.class" afterPath="$PROJECT_DIR$/domain/target/classes/com/jd/m/cms/bjshare/domain/vo/OrderDataVo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/domain.jar" afterPath="$PROJECT_DIR$/domain/target/domain.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/test-classes/com/test/ValidateServiceImpl$1.class" afterPath="$PROJECT_DIR$/domain/target/test-classes/com/test/ValidateServiceImpl$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/target/classes/com/jd/m/bjshare/activity/client/service/impl/SelfItemCateServiceJsfImpl.class" afterPath="$PROJECT_DIR$/service/target/classes/com/jd/m/bjshare/activity/client/service/impl/SelfItemCateServiceJsfImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/target/service.jar" afterPath="$PROJECT_DIR$/service/target/service.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/com/jd/m/cms/bjshare/web/controller/ExportController.class" afterPath="$PROJECT_DIR$/web/target/classes/com/jd/m/cms/bjshare/web/controller/ExportController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest.class" afterPath="$PROJECT_DIR$/web/target/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest2.class" afterPath="$PROJECT_DIR$/web/target/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/com/task/contentQuartzTeat.class" afterPath="$PROJECT_DIR$/web/target/classes/com/task/contentQuartzTeat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/test-classes/com/testNum.class" afterPath="$PROJECT_DIR$/web/target/test-classes/com/testNum.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/com/jd/m/cms/bjshare/web/controller/ExportController.class" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/com/jd/m/cms/bjshare/web/controller/ExportController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest.class" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest2.class" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/com/jd/m/cms/bjshare/web/quartz/quartzTest2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/client-0.0.1-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/client-0.0.1-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/common-0.0.1-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/common-0.0.1-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/dao-0.0.1-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/dao-0.0.1-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/domain-0.0.1-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/domain-0.0.1-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/service-0.0.1-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/service-0.0.1-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/web_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.iml" afterPath="$PROJECT_DIR$/client/client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/com/jd/m/cms/bjshare/client/activity/SelfItemCateJsfService.java" afterPath="$PROJECT_DIR$/client/src/main/java/com/jd/m/cms/bjshare/client/activity/SelfItemCateJsfService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/common.iml" afterPath="$PROJECT_DIR$/common/common.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/pom.xml" afterPath="$PROJECT_DIR$/common/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/com/jd/m/cms/bjshare/common/exportexcel/BatchExportToExcelUtil.java" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/m/cms/bjshare/common/exportexcel/BatchExportToExcelUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/com/jd/m/cms/bjshare/common/result/ResultCode.java" afterPath="$PROJECT_DIR$/common/src/main/java/com/jd/m/cms/bjshare/common/result/ResultCode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/dao.iml" afterPath="$PROJECT_DIR$/dao/dao.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/pom.xml" afterPath="$PROJECT_DIR$/dao/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ActivityBizsMapper.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ActivityBizsMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalAdditionalMapper.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalAdditionalMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ActivityDataStatisticalDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/SelfItemCateMapper.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/SelfItemCateMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ShareActivityAdditionalMapper.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ShareActivityAdditionalMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ShareActivityDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/com/jd/m/cms/bjshare/dao/ShareActivityDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ActivityBizsMapper.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ActivityBizsMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ActivityDataStatistical.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ActivityDataStatistical.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ActivityDataStatisticalAdditionalMapper.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ActivityDataStatisticalAdditionalMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ShareActivity.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ShareActivity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ShareActivityAdditionalMapper.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ShareActivityAdditionalMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ShareActivityOrderStatistics.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ShareActivityOrderStatistics.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/resources/ShareRuleAdditionalMapper.xml" afterPath="$PROJECT_DIR$/dao/src/main/resources/ShareRuleAdditionalMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/ActivityBizsMapper.xml" afterPath="$PROJECT_DIR$/dao/target/classes/ActivityBizsMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/ActivityDataStatistical.xml" afterPath="$PROJECT_DIR$/dao/target/classes/ActivityDataStatistical.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/ActivityDataStatisticalAdditionalMapper.xml" afterPath="$PROJECT_DIR$/dao/target/classes/ActivityDataStatisticalAdditionalMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/ShareActivity.xml" afterPath="$PROJECT_DIR$/dao/target/classes/ShareActivity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/ShareActivityAdditionalMapper.xml" afterPath="$PROJECT_DIR$/dao/target/classes/ShareActivityAdditionalMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/ShareActivityOrderStatistics.xml" afterPath="$PROJECT_DIR$/dao/target/classes/ShareActivityOrderStatistics.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/classes/ShareRuleAdditionalMapper.xml" afterPath="$PROJECT_DIR$/dao/target/classes/ShareRuleAdditionalMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/dao/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/domain.iml" afterPath="$PROJECT_DIR$/domain/domain.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityBizs.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityBizs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityBizsExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditional.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditional.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ActivityDataStatisticalAdditionalExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditional.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditional.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareActivityAdditionalExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareActivityOrderStatistics.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareActivityOrderStatistics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditional.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditional.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/po/ShareRuleAdditionalExample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/ActivityDataCountVo.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/ActivityDataCountVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/CouponDataVo.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/CouponDataVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/OrderDataVo.java" afterPath="$PROJECT_DIR$/domain/src/main/java/com/jd/m/cms/bjshare/domain/vo/OrderDataVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/src/test/java/com/test/ValidateServiceImpl.java" afterPath="$PROJECT_DIR$/domain/src/test/java/com/test/ValidateServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/domain/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/domain/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.txt" afterPath="$PROJECT_DIR$/readme.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/service.iml" afterPath="$PROJECT_DIR$/service/service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/src/main/java/com/jd/m/bjshare/activity/client/service/impl/SelfItemCateServiceJsfImpl.java" afterPath="$PROJECT_DIR$/service/src/main/java/com/jd/m/bjshare/activity/client/service/impl/SelfItemCateServiceJsfImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/service/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/pom.xml" afterPath="$PROJECT_DIR$/web/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/controller/ExportController.java" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/controller/ExportController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/quartz/quartzTest.java" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/quartz/quartzTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/quartz/quartzTest2.java" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/m/cms/bjshare/web/quartz/quartzTest2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/com/task/contentQuartzTeat.java" afterPath="$PROJECT_DIR$/web/src/main/java/com/task/contentQuartzTeat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/resources/spring/springmvc.xml" afterPath="$PROJECT_DIR$/web/src/main/resources/spring/springmvc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/test/java/com/testNum.java" afterPath="$PROJECT_DIR$/web/src/test/java/com/testNum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/spring/springmvc.xml" afterPath="$PROJECT_DIR$/web/target/classes/spring/springmvc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/web/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/web/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/web/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/log4j.properties" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/spring/springmvc.xml" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/classes/spring/springmvc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/web.iml" afterPath="$PROJECT_DIR$/web/web.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_3.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/src/main/resources/spring/applicationContext-quartz.xml" afterPath="$PROJECT_DIR$/web/src/main/resources/conf/applicationContext-quartz.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -252,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/readme.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -912,7 +739,7 @@
       <workItem from="1539333279765" duration="15118000" />
       <workItem from="1539756389761" duration="5240000" />
       <workItem from="1540177216630" duration="7217000" />
-      <workItem from="1540776122992" duration="9829000" />
+      <workItem from="1540776122992" duration="10591000" />
     </task>
     <task id="LOCAL-00001" summary="再提交readme.txt">
       <created>1532240079302</created>
@@ -957,7 +784,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="534106000" />
+    <option name="totallyTimeSpent" value="534868000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -970,12 +797,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1088" y="-8" width="1096" height="1906" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40881273" sideWeight="0.50431967" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925338" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20518358" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -988,12 +814,12 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32163405" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31300345" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33026466" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33026466" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2994186" sideWeight="0.78212976" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1008,6 +834,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -1487,7 +1323,7 @@
     <entry file="file://$PROJECT_DIR$/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
           <folding />
         </state>
       </provider>
