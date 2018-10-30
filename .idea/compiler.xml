@@ -15,12 +15,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="client" target="1.7" />
+      <module name="client" target="1.5" />
       <module name="common" target="1.7" />
       <module name="dao" target="1.7" />
-      <module name="domain" target="1.7" />
+      <module name="domain" target="1.5" />
       <module name="parent" target="1.7" />
-      <module name="service" target="1.7" />
+      <module name="service" target="1.5" />
       <module name="web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
