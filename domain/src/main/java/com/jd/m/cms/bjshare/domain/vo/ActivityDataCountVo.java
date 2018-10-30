@@ -15,7 +15,7 @@ public class ActivityDataCountVo implements Serializable {
 	private Long pageUvCount;
 	//分享点击次数
 	private Long clickNumberCount;
-	//分享成功的uv
+	//分享成功的总次数
 	private Long clickSuccessUvCount;
 	//打开次数
 	private Long openNumberCount;
@@ -33,6 +33,20 @@ public class ActivityDataCountVo implements Serializable {
 	private Long couponCostAmountCount;
 	//商家发放京豆数量
 	private Long beanCostAmountCount;
+
+	private Long clickNumberUvCount;//<!-- 分享有礼点击UV-->
+
+	private Long shareSuccessUvCount;//<!-- 分享成功UV-->
+
+	private Long actualOrderNumberCount;//<!--有效订单数量 -->
+
+	private Long actualOrderAmountCount;//<!-- 有效订单金额-->
+
+	private Long couponOrdernumberCount;//<!--券引入订单 -->
+
+	private Long couponOrderAmountCount;//<!--券引入订单金额-->
+
+	private Long activityNumCount;//活动总数
 
 	public Long getPageUvCount() {
 		return pageUvCount;
@@ -120,5 +134,61 @@ public class ActivityDataCountVo implements Serializable {
 
 	public void setBeanCostAmountCount(Long beanCostAmountCount) {
 		this.beanCostAmountCount = beanCostAmountCount;
+	}
+
+	public Long getClickNumberUvCount() {
+		return clickNumberUvCount;
+	}
+
+	public void setClickNumberUvCount(Long clickNumberUvCount) {
+		this.clickNumberUvCount = clickNumberUvCount;
+	}
+
+	public Long getShareSuccessUvCount() {
+		return shareSuccessUvCount;
+	}
+
+	public void setShareSuccessUvCount(Long shareSuccessUvCount) {
+		this.shareSuccessUvCount = shareSuccessUvCount;
+	}
+
+	public Long getActualOrderNumberCount() {
+		return actualOrderNumberCount;
+	}
+
+	public void setActualOrderNumberCount(Long actualOrderNumberCount) {
+		this.actualOrderNumberCount = actualOrderNumberCount;
+	}
+
+	public Long getActualOrderAmountCount() {
+		return actualOrderAmountCount;
+	}
+
+	public void setActualOrderAmountCount(Long actualOrderAmountCount) {
+		this.actualOrderAmountCount = actualOrderAmountCount;
+	}
+
+	public Long getCouponOrdernumberCount() {
+		return couponOrdernumberCount;
+	}
+
+	public void setCouponOrdernumberCount(Long couponOrdernumberCount) {
+		this.couponOrdernumberCount = couponOrdernumberCount;
+	}
+
+	public Long getCouponOrderAmountCount() {
+		return couponOrderAmountCount;
+	}
+
+	public void setCouponOrderAmountCount(Long couponOrderAmountCount) {
+		this.couponOrderAmountCount = couponOrderAmountCount;
+	}
+
+	public Long getActivityNumCount() {
+		return activityNumCount;
+	}
+
+	public void setActivityNumCount(Long activityNumCount) {
+		this.activityNumCount = activityNumCount;
 	}
 }

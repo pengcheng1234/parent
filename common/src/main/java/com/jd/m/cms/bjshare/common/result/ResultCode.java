@@ -35,6 +35,10 @@ public enum ResultCode {
 
     IMAGE_UPLOAD_ERROR("14","图片上传异常，请稍后重试"),
 
+    PERMISSIONS_ERROR("15","该用户没有审批权限"),
+
+    timeError("16", "查询间隔超过半年"),// 查询时间超过6个月
+
     sysError("-1", "系统异常"),
     
     limitError("-2", "风控限流"),
@@ -42,6 +46,7 @@ public enum ResultCode {
     dbError("-3", "数据库异常"),
     
     otherError("-99", "服务器异常");// 预留异常code，客户端见到此code直接显示errorMsg，方便后期扩展
+
 
     private String code;
 

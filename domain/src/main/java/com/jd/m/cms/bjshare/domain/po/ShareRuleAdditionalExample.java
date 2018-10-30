@@ -445,52 +445,62 @@ public class ShareRuleAdditionalExample {
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdEqualTo(Integer value) {
+        public Criteria andTopBusinessIdEqualTo(String value) {
             addCriterion("top_business_id =", value, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdNotEqualTo(Integer value) {
+        public Criteria andTopBusinessIdNotEqualTo(String value) {
             addCriterion("top_business_id <>", value, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdGreaterThan(Integer value) {
+        public Criteria andTopBusinessIdGreaterThan(String value) {
             addCriterion("top_business_id >", value, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTopBusinessIdGreaterThanOrEqualTo(String value) {
             addCriterion("top_business_id >=", value, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdLessThan(Integer value) {
+        public Criteria andTopBusinessIdLessThan(String value) {
             addCriterion("top_business_id <", value, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdLessThanOrEqualTo(Integer value) {
+        public Criteria andTopBusinessIdLessThanOrEqualTo(String value) {
             addCriterion("top_business_id <=", value, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdIn(List<Integer> values) {
+        public Criteria andTopBusinessIdLike(String value) {
+            addCriterion("top_business_id like", value, "topBusinessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTopBusinessIdNotLike(String value) {
+            addCriterion("top_business_id not like", value, "topBusinessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTopBusinessIdIn(List<String> values) {
             addCriterion("top_business_id in", values, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdNotIn(List<Integer> values) {
+        public Criteria andTopBusinessIdNotIn(List<String> values) {
             addCriterion("top_business_id not in", values, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdBetween(Integer value1, Integer value2) {
+        public Criteria andTopBusinessIdBetween(String value1, String value2) {
             addCriterion("top_business_id between", value1, value2, "topBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTopBusinessIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andTopBusinessIdNotBetween(String value1, String value2) {
             addCriterion("top_business_id not between", value1, value2, "topBusinessId");
             return (Criteria) this;
         }
@@ -505,52 +515,62 @@ public class ShareRuleAdditionalExample {
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdEqualTo(Integer value) {
+        public Criteria andSecondBusinessIdEqualTo(String value) {
             addCriterion("second_business_id =", value, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdNotEqualTo(Integer value) {
+        public Criteria andSecondBusinessIdNotEqualTo(String value) {
             addCriterion("second_business_id <>", value, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdGreaterThan(Integer value) {
+        public Criteria andSecondBusinessIdGreaterThan(String value) {
             addCriterion("second_business_id >", value, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSecondBusinessIdGreaterThanOrEqualTo(String value) {
             addCriterion("second_business_id >=", value, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdLessThan(Integer value) {
+        public Criteria andSecondBusinessIdLessThan(String value) {
             addCriterion("second_business_id <", value, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdLessThanOrEqualTo(Integer value) {
+        public Criteria andSecondBusinessIdLessThanOrEqualTo(String value) {
             addCriterion("second_business_id <=", value, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdIn(List<Integer> values) {
+        public Criteria andSecondBusinessIdLike(String value) {
+            addCriterion("second_business_id like", value, "secondBusinessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondBusinessIdNotLike(String value) {
+            addCriterion("second_business_id not like", value, "secondBusinessId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSecondBusinessIdIn(List<String> values) {
             addCriterion("second_business_id in", values, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdNotIn(List<Integer> values) {
+        public Criteria andSecondBusinessIdNotIn(List<String> values) {
             addCriterion("second_business_id not in", values, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdBetween(Integer value1, Integer value2) {
+        public Criteria andSecondBusinessIdBetween(String value1, String value2) {
             addCriterion("second_business_id between", value1, value2, "secondBusinessId");
             return (Criteria) this;
         }
 
-        public Criteria andSecondBusinessIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andSecondBusinessIdNotBetween(String value1, String value2) {
             addCriterion("second_business_id not between", value1, value2, "secondBusinessId");
             return (Criteria) this;
         }
@@ -565,52 +585,62 @@ public class ShareRuleAdditionalExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdEqualTo(Integer value) {
+        public Criteria andOrgIdEqualTo(String value) {
             addCriterion("org_id =", value, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdNotEqualTo(Integer value) {
+        public Criteria andOrgIdNotEqualTo(String value) {
             addCriterion("org_id <>", value, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdGreaterThan(Integer value) {
+        public Criteria andOrgIdGreaterThan(String value) {
             addCriterion("org_id >", value, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andOrgIdGreaterThanOrEqualTo(String value) {
             addCriterion("org_id >=", value, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdLessThan(Integer value) {
+        public Criteria andOrgIdLessThan(String value) {
             addCriterion("org_id <", value, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdLessThanOrEqualTo(Integer value) {
+        public Criteria andOrgIdLessThanOrEqualTo(String value) {
             addCriterion("org_id <=", value, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdIn(List<Integer> values) {
+        public Criteria andOrgIdLike(String value) {
+            addCriterion("org_id like", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdNotLike(String value) {
+            addCriterion("org_id not like", value, "orgId");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrgIdIn(List<String> values) {
             addCriterion("org_id in", values, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdNotIn(List<Integer> values) {
+        public Criteria andOrgIdNotIn(List<String> values) {
             addCriterion("org_id not in", values, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdBetween(Integer value1, Integer value2) {
+        public Criteria andOrgIdBetween(String value1, String value2) {
             addCriterion("org_id between", value1, value2, "orgId");
             return (Criteria) this;
         }
 
-        public Criteria andOrgIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andOrgIdNotBetween(String value1, String value2) {
             addCriterion("org_id not between", value1, value2, "orgId");
             return (Criteria) this;
         }

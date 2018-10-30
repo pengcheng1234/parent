@@ -58,6 +58,36 @@ public class ShareActivityOrderStatistics implements Serializable {
 
     private Long venderId;
 
+    private Integer status;
+
+    private String orderStatus;
+
+    private String bizId;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getBizId() {
+        return bizId;
+    }
+
+    public void setBizId(String bizId) {
+        this.bizId = bizId;
+    }
+
     public Long getId() {
         return id;
     }

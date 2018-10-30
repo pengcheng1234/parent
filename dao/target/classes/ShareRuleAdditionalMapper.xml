@@ -7,9 +7,9 @@
     <result column="caller_code" property="callerCode" jdbcType="VARCHAR" />
     <result column="key" property="key" jdbcType="VARCHAR" />
     <result column="business_code" property="businessCode" jdbcType="VARCHAR" />
-    <result column="top_business_id" property="topBusinessId" jdbcType="INTEGER" />
-    <result column="second_business_id" property="secondBusinessId" jdbcType="INTEGER" />
-    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="top_business_id" property="topBusinessId" jdbcType="VARCHAR" />
+    <result column="second_business_id" property="secondBusinessId" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
     <result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
     <result column="reserve2" property="reserve2" jdbcType="VARCHAR" />
     <result column="reserve3" property="reserve3" jdbcType="VARCHAR" />
@@ -115,8 +115,8 @@
       reserve2, reserve3, create_time, 
       status)
     values (#{id,jdbcType=INTEGER}, #{shareRuleId,jdbcType=INTEGER}, #{callerCode,jdbcType=VARCHAR}, 
-      #{key,jdbcType=VARCHAR}, #{businessCode,jdbcType=VARCHAR}, #{topBusinessId,jdbcType=INTEGER}, 
-      #{secondBusinessId,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{reserve1,jdbcType=VARCHAR}, 
+      #{key,jdbcType=VARCHAR}, #{businessCode,jdbcType=VARCHAR}, #{topBusinessId,jdbcType=VARCHAR}, 
+      #{secondBusinessId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, 
       #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=TINYINT})
   </insert>
@@ -133,7 +133,7 @@
         caller_code,
       </if>
       <if test="key != null" >
-        `key`,
+        key,
       </if>
       <if test="businessCode != null" >
         business_code,
@@ -180,13 +180,13 @@
         #{businessCode,jdbcType=VARCHAR},
       </if>
       <if test="topBusinessId != null" >
-        #{topBusinessId,jdbcType=INTEGER},
+        #{topBusinessId,jdbcType=VARCHAR},
       </if>
       <if test="secondBusinessId != null" >
-        #{secondBusinessId,jdbcType=INTEGER},
+        #{secondBusinessId,jdbcType=VARCHAR},
       </if>
       <if test="orgId != null" >
-        #{orgId,jdbcType=INTEGER},
+        #{orgId,jdbcType=VARCHAR},
       </if>
       <if test="reserve1 != null" >
         #{reserve1,jdbcType=VARCHAR},
@@ -230,13 +230,13 @@
         business_code = #{record.businessCode,jdbcType=VARCHAR},
       </if>
       <if test="record.topBusinessId != null" >
-        top_business_id = #{record.topBusinessId,jdbcType=INTEGER},
+        top_business_id = #{record.topBusinessId,jdbcType=VARCHAR},
       </if>
       <if test="record.secondBusinessId != null" >
-        second_business_id = #{record.secondBusinessId,jdbcType=INTEGER},
+        second_business_id = #{record.secondBusinessId,jdbcType=VARCHAR},
       </if>
       <if test="record.orgId != null" >
-        org_id = #{record.orgId,jdbcType=INTEGER},
+        org_id = #{record.orgId,jdbcType=VARCHAR},
       </if>
       <if test="record.reserve1 != null" >
         reserve1 = #{record.reserve1,jdbcType=VARCHAR},
@@ -265,9 +265,9 @@
       caller_code = #{record.callerCode,jdbcType=VARCHAR},
       key = #{record.key,jdbcType=VARCHAR},
       business_code = #{record.businessCode,jdbcType=VARCHAR},
-      top_business_id = #{record.topBusinessId,jdbcType=INTEGER},
-      second_business_id = #{record.secondBusinessId,jdbcType=INTEGER},
-      org_id = #{record.orgId,jdbcType=INTEGER},
+      top_business_id = #{record.topBusinessId,jdbcType=VARCHAR},
+      second_business_id = #{record.secondBusinessId,jdbcType=VARCHAR},
+      org_id = #{record.orgId,jdbcType=VARCHAR},
       reserve1 = #{record.reserve1,jdbcType=VARCHAR},
       reserve2 = #{record.reserve2,jdbcType=VARCHAR},
       reserve3 = #{record.reserve3,jdbcType=VARCHAR},
@@ -293,13 +293,13 @@
         business_code = #{businessCode,jdbcType=VARCHAR},
       </if>
       <if test="topBusinessId != null" >
-        top_business_id = #{topBusinessId,jdbcType=INTEGER},
+        top_business_id = #{topBusinessId,jdbcType=VARCHAR},
       </if>
       <if test="secondBusinessId != null" >
-        second_business_id = #{secondBusinessId,jdbcType=INTEGER},
+        second_business_id = #{secondBusinessId,jdbcType=VARCHAR},
       </if>
       <if test="orgId != null" >
-        org_id = #{orgId,jdbcType=INTEGER},
+        org_id = #{orgId,jdbcType=VARCHAR},
       </if>
       <if test="reserve1 != null" >
         reserve1 = #{reserve1,jdbcType=VARCHAR},
@@ -325,9 +325,9 @@
       caller_code = #{callerCode,jdbcType=VARCHAR},
       key = #{key,jdbcType=VARCHAR},
       business_code = #{businessCode,jdbcType=VARCHAR},
-      top_business_id = #{topBusinessId,jdbcType=INTEGER},
-      second_business_id = #{secondBusinessId,jdbcType=INTEGER},
-      org_id = #{orgId,jdbcType=INTEGER},
+      top_business_id = #{topBusinessId,jdbcType=VARCHAR},
+      second_business_id = #{secondBusinessId,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
       reserve1 = #{reserve1,jdbcType=VARCHAR},
       reserve2 = #{reserve2,jdbcType=VARCHAR},
       reserve3 = #{reserve3,jdbcType=VARCHAR},

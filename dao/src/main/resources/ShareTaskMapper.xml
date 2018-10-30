@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.ShareTaskDao">
+    <!--获取待领取的奖励-->
+    <select id="getPenddingNumber" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            (
+                SELECT
+                    1
+                FROM
+                    activity_share_success_log suc
+                WHERE
+                    suc.upin = #{pin}
+                AND suc.token NOT IN (
+                    SELECT
+                        token
+                    FROM
+                        share_url_click_log click
+                    WHERE
+                        click.reward_type = 1
+                    AND click.share_pin = #{pin}
+                )
+                GROUP BY
+                    suc.activity_id,
+                    suc.biz_id
+            ) suc_notclick
+  </select>
+    <!--获取近60天获取的京豆总和-->
+    <select id="getBeanNumber" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT
+        sum(bean_num)
+        FROM
+        send_bean_log
+        WHERE
+        send_code = #{pin}
+        AND DATE_SUB(CURDATE(), INTERVAL #{day} DAY)  &lt;= date(time)
+  </select>
+    <!--汇总该pin作为分享者和被分享者身份，在近两个月内（以当天时间计算）内所获得优惠券张数总和，包含未使用和已使用、已过期三种状态-->
+    <select id="getCouponNumber" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+        SELECT
+        count(1)
+        FROM
+        send_coupon_log
+        WHERE
+        user_pin = #{pin}
+        AND DATE_SUB(CURDATE(), INTERVAL #{day} DAY)  &lt;= date(time)
+  </select>
+</mapper>

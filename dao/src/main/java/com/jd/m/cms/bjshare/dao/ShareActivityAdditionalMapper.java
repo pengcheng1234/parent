@@ -2,7 +2,6 @@ package com.jd.m.cms.bjshare.dao;
 
 import com.jd.m.cms.bjshare.domain.po.ShareActivityAdditional;
 import com.jd.m.cms.bjshare.domain.po.ShareActivityAdditionalExample;
-import com.jd.m.cms.bjshare.domain.po.ShareActivityAdditionalWithBLOBs;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,25 +13,19 @@ public interface ShareActivityAdditionalMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(ShareActivityAdditionalWithBLOBs record);
+    int insert(ShareActivityAdditional record);
 
-    int insertSelective(ShareActivityAdditionalWithBLOBs record);
-
-    List<ShareActivityAdditionalWithBLOBs> selectByExampleWithBLOBs(ShareActivityAdditionalExample example);
+    int insertSelective(ShareActivityAdditional record);
 
     List<ShareActivityAdditional> selectByExample(ShareActivityAdditionalExample example);
 
-    ShareActivityAdditionalWithBLOBs selectByPrimaryKey(Integer id);
+    ShareActivityAdditional selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(@Param("record") ShareActivityAdditionalWithBLOBs record, @Param("example") ShareActivityAdditionalExample example);
-
-    int updateByExampleWithBLOBs(@Param("record") ShareActivityAdditionalWithBLOBs record, @Param("example") ShareActivityAdditionalExample example);
+    int updateByExampleSelective(@Param("record") ShareActivityAdditional record, @Param("example") ShareActivityAdditionalExample example);
 
     int updateByExample(@Param("record") ShareActivityAdditional record, @Param("example") ShareActivityAdditionalExample example);
 
-    int updateByPrimaryKeySelective(ShareActivityAdditionalWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(ShareActivityAdditionalWithBLOBs record);
+    int updateByPrimaryKeySelective(ShareActivityAdditional record);
 
     int updateByPrimaryKey(ShareActivityAdditional record);
 }

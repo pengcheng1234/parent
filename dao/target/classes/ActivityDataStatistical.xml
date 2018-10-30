@@ -1,352 +1,827 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jd.m.cms.bjshare.dao.ActivityDataStatisticalDao" >
-  <resultMap id="BaseResultMap" type="com.jd.m.cms.bjshare.domain.po.ActivityDataStatistical" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="creator" property="creator" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
-    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
-    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
-    <result column="bizid" property="bizid" jdbcType="VARCHAR" />
-    <result column="biz_type" property="bizType" jdbcType="INTEGER" />
-    <result column="page_uv" property="pageUv" jdbcType="BIGINT" />
-    <result column="activity_id" property="activityId" jdbcType="BIGINT" />
-    <result column="vender_id" property="venderId" jdbcType="BIGINT" />
-    <result column="statistical_time" property="statisticalTime" jdbcType="TIMESTAMP" />
-    <result column="statistical_date" property="statisticalDate" jdbcType="BIGINT" />
-    <result column="activity_name" property="activityName" jdbcType="VARCHAR" />
-    <result column="click_number" property="clickNumber" jdbcType="BIGINT" />
-    <result column="click_success_uv" property="clickSuccessUv" jdbcType="BIGINT" />
-    <result column="open_number" property="openNumber" jdbcType="BIGINT" />
-    <result column="open_success_uv" property="openSuccessUv" jdbcType="BIGINT" />
-    <result column="order_number" property="orderNumber" jdbcType="BIGINT" />
-    <result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
-    <result column="drainage_avg_num" property="drainageAvgNum" jdbcType="BIGINT" />
-    <result column="import_dau" property="importDau" jdbcType="BIGINT" />
-    <result column="coupon_used_amount" property="couponUsedAmount" jdbcType="BIGINT" />
-    <result column="bean_used_amount" property="beanUsedAmount" jdbcType="BIGINT" />
-    <result column="coupon_cost_amount" property="couponCostAmount" jdbcType="BIGINT" />
-    <result column="bean_cost_amount" property="beanCostAmount" jdbcType="BIGINT" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.ActivityDataStatisticalDao">
+    <resultMap id="BaseResultMap" type="ActivityDataStatistical">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="modifier" property="modifier" jdbcType="VARCHAR"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="is_delete" property="isDelete" jdbcType="INTEGER"/>
+        <result column="bizid" property="bizid" jdbcType="VARCHAR"/>
+        <result column="biz_type" property="bizType" jdbcType="INTEGER"/>
+        <result column="page_uv" property="pageUv" jdbcType="BIGINT"/>
+        <result column="activity_id" property="activityId" jdbcType="BIGINT"/>
+        <result column="vender_id" property="venderId" jdbcType="BIGINT"/>
+        <result column="statistical_time" property="statisticalTime" jdbcType="TIMESTAMP"/>
+        <result column="statistical_date" property="statisticalDate" jdbcType="BIGINT"/>
+        <result column="activity_name" property="activityName" jdbcType="VARCHAR"/>
+        <result column="click_number" property="clickNumber" jdbcType="BIGINT"/>
+        <result column="click_success_uv" property="clickSuccessUv" jdbcType="BIGINT"/>
+        <result column="open_number" property="openNumber" jdbcType="BIGINT"/>
+        <result column="open_success_uv" property="openSuccessUv" jdbcType="BIGINT"/>
+        <result column="order_number" property="orderNumber" jdbcType="BIGINT"/>
+        <result column="order_amount" property="orderAmount" jdbcType="DECIMAL"/>
+        <result column="drainage_avg_num" property="drainageAvgNum" jdbcType="BIGINT"/>
+        <result column="import_dau" property="importDau" jdbcType="BIGINT"/>
+        <result column="coupon_used_amount" property="couponUsedAmount" jdbcType="BIGINT"/>
+        <result column="bean_used_amount" property="beanUsedAmount" jdbcType="BIGINT"/>
+        <result column="coupon_cost_amount" property="couponCostAmount" jdbcType="BIGINT"/>
+        <result column="bean_cost_amount" property="beanCostAmount" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <!--扩展的统计对象-->
+    <resultMap id="activityDataStatisticalExtendMap" type="com.jd.m.cms.bjshare.domain.vo.ActivityDataStatisticalExtend"
+               extends="BaseResultMap">
+        <result column="shopOrErpNum" property="shopOrErpNum" jdbcType="VARCHAR"/><!-- 参与店铺/ERP数量总数-->
+        <result column="couponUsage" property="couponUsage" jdbcType="VARCHAR"/><!-- 卷的使用率-->
+        <result column="activityNum" property="activityNum" jdbcType="BIGINT"/><!-- 活动总数量-->
+        <result column="share_open_num" property="shareOpenNum" jdbcType="BIGINT"/><!-- 分享者打开次数-->
+        <result column="shared_open_num" property="sharedOpenNum" jdbcType="BIGINT"/><!-- 被分享者打开次数-->
+        <result column="share_success_uv" property="shareSuccessUv" jdbcType="BIGINT"/><!-- 分享成功uv-->
+        <result column="share_open_uv" property="shareOpenUv" jdbcType="BIGINT"/><!-- 分享者打开uv-->
+        <result column="shared_open_uv" property="sharedOpenUv" jdbcType="BIGINT"/><!-- 被分享者打开uv-->
+        <result column="actual_order_amount" property="actualOrderAmount" jdbcType="DECIMAL"/><!-- 实际订单金额-->
+        <result column="actual_order_number" property="actualOrderNumber" jdbcType="BIGINT"/><!-- 实际订单数量-->
+        <result column="done_order_amount" property="DoneOrderAmount" jdbcType="DECIMAL"/><!-- 完成订单金额-->
+        <result column="done_order_number" property="DoneOrderNumber" jdbcType="BIGINT"/><!-- 完成订单数量-->
+        <result column="first_category" property="firstCategory" jdbcType="INTEGER"/><!-- 一级分类'-->
+        <result column="second_category" property="secondCategory" jdbcType="INTEGER"/><!-- 一级分类'-->
+        <result column="third_category" property="thirdCategory" jdbcType="INTEGER"/><!-- 一级分类'-->
+        <result column="click_number_uv" property="clickNumberUv" jdbcType="BIGINT"/><!-- 分享成功uv-->
+        <result column="coupon_order_amount" property="couponOrderAmount" jdbcType="DECIMAL"/><!-- 使用券引入的订单金额-->
+        <result column="coupon_order_number" property="couponOrderNumber" jdbcType="BIGINT"/><!-- 使用券引入的订单数量-->
+        <result column="biz_type_name" property="bizTypeName" jdbcType="VARCHAR"/><!-- 活动入口-->
+    </resultMap>
+    <sql id="Base_Column_List">
     id, creator, create_date, modifier, modify_time, is_delete, bizid, biz_type, page_uv, 
     activity_id, vender_id, statistical_time, statistical_date, activity_name,
     click_number, click_success_uv, open_number, open_success_uv, order_number, order_amount, 
     drainage_avg_num, import_dau, coupon_used_amount, bean_used_amount, coupon_cost_amount, 
     bean_cost_amount
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from activity_data_statistical
-    where id = #{id,jdbcType=INTEGER}
-  </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--执行整个sql-->
+    <select id="excuteSql" parameterType="String" resultType="java.lang.Integer">
+        ${sql}
+    </select>
+    <!-- 二期时间查询合并到一个方法 by lipengcheng 2018.7.19 -->
+    <select id="getAllDataListByDate" resultMap="activityDataStatisticalExtendMap" parameterType="java.util.Map">
+        SELECT
+        <if test="Type == 1">
+            ads.statistical_time,<!--时间-->
+        </if>
+        <if test="Type == 2">
+            ads.vender_id,<!--商家-->
+        </if>
+        <if test="Type == 3">
+            adsa.category,<!--采销分类-->
+        </if>
+        <if test="activityType == 0"><!--pop-->
+            COUNT(sa.shop_id) shopOrErpSum,<!--参与店铺/ERP数量-->
+        </if>
+        <if test="activityType == 1"><!--自营-->
+            COUNT(sa.creator) shopOrErpSum,<!--参与店铺/ERP数量-->
+        </if>
+        <if test="activityType == null"><!--自营+pop-->
+            COUNT(sa.shop_id)+COUNT(sa.creator) shopOrErpSum,<!--参与店铺/ERP数量-->
+        </if>
+
+        (select Count(id) from share_activity where is_delete = 0 ) ActitySum ,
+        SUM(ads.page_uv) page_uv,<!--页面uv-->
+        SUM(ads.click_number) click_number, <!--点击分享按钮次数-->
+        SUM(ads.click_success_uv) click_success_uv, <!--总分享次数-->
+        SUM(adsa.share_success_uv) share_success_uv, <!--总分享UV-->
+        SUM(ads.open_number) open_number, <!--打开次数-->
+        SUM(ads.open_success_uv) open_success_uv,<!--打开UV-->
+        SUM(ads.import_dau) import_dau,<!--引入DAU-->
+        avg(ads.drainage_avg_num) drainage_avg_num, <!--平均每个分享者引流数-->
+        SUM(ads.order_number) order_number,<!--分享引入订单量-->
+        SUM(ads.order_amount) order_amount,<!--分享引入订单金额-->
+        SUM(ads.bean_used_amount) bean_used_amount,<!--用户已使用京豆数量-->
+        SUM(ads.coupon_used_amount) coupon_used_amount,<!--用户已使用优惠券数量-->
+        SUM(ads.coupon_cost_amount) coupon_cost_amount, <!--发放券的数量-->
+        SUM(ads.bean_cost_amount) bean_cost_amount  <!--发放京豆的数量-->
+        FROM
+        activity_data_statistical ads
+        LEFT JOIN activity_data_statistical_additional adsa on ads.id=adsa.statistical_id
+        LEFT JOIN share_activity sa ON ads.activity_id = sa.id
+        LEFT JOIN share_activity_additional saa ON saa.activity_id=sa.id
+        where 1 = 1
+        AND ads.is_delete = 0
+        <if test="bizType != null">
+            and ads.biz_type = #{bizType,jdbcType=INTEGER}
+        </if>
+        <if test="activityId != null">
+            and ads.activity_id = #{activityId,jdbcType=BIGINT}
+        </if>
+        <if test="status != null">
+            and sa.status = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="startDate != null and endDate != null">
+            and ads.statistical_date BETWEEN #{startDate,jdbcType=BIGINT} AND #{endDate,jdbcType=BIGINT}
+        </if>
+        <if test="firstCategory != null "><!-- 一级分类-->
+            and adsa.category LIKE concat('%',#{firstCategory,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="secondCategory != null "><!-- 二级分类-->
+            and adsa.category LIKE concat('%',#{secondCategory,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="thirdCategory != null "><!-- 三级分类-->
+            and adsa.category LIKE concat('%',#{thirdCategory,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="shopId != null "><!-- 店铺id-->
+            and sa.shop_id = #{shopId,jdbcType=VARCHAR}
+        </if>
+        <if test="activityType == 0 "><!-- 活动类型为pop，需要管理的表为null-->
+            and saa.type is null
+        </if>
+        <if test="activityType == 1 "><!-- 活动类型为自营,type=1-->
+            and saa.type = 1
+        </if>
+        <if test="creator !=null "><!-- 创建者-->
+            and and sa.creator = #{creator,jdbcType=VARCHAR}
+        </if>
+
+        group by
+        <if test="Type == 1">
+            ads.statistical_time<!--时间-->
+        </if>
+        <if test="Type == 2">
+            ads.vender_id<!--商家-->
+        </if>
+        <if test="Type == 3">
+            adsa.category<!--采销分类-->
+        </if>
+        <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 1">
+            ORDER BY click_success_uv ASC
+        </if>
+        <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 2">
+            ORDER BY click_success_uv DESC
+        </if>
+        <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 1">
+            ORDER BY share_success_uv ASC
+        </if>
+        <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 2">
+            ORDER BY share_success_uv DESC
+        </if>
+        <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 1">
+            ORDER BY open_number ASC
+        </if>
+        <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 2">
+            ORDER BY open_number DESC
+        </if>
+        <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 1">
+            ORDER BY open_success_uv ASC
+        </if>
+        <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 2">
+            ORDER BY open_success_uv DESC
+        </if>
+        <if test="sortFiled != null and sortFiled == 5 and sortValue != null and sortValue == 1">
+            ORDER BY order_number ASC
+        </if>
+        <if test="sortFiled != null and sortFiled == 5 and sortValue != null and sortValue == 2">
+            ORDER BY order_number DESC
+        </if>
+        <if test="sortFiled != null and sortFiled == 6 and sortValue != null and sortValue == 1">
+            ORDER BY order_amount ASC
+        </if>
+        <if test="sortFiled != null and sortFiled == 6 and sortValue != null and sortValue == 2">
+            ORDER BY order_amount DESC
+        </if>
+    </select>
+
+    <!-- 统计商品数量 by lipengcheng 2018.7.24 -->
+    <select id="getGoodsNum" resultMap="activityDataStatisticalExtendMap" parameterType="java.util.Map">
+        SELECT
+        <if test="activityType == 0"><!--pop——商品数量-->
+            case when locate(',',sa.biz_ids)=0 then 1
+            when locate(',',sa.biz_ids)>0 then length(sa.biz_ids)-length(replace(sa.biz_ids,',',''))+1
+            end goodsNum
+        </if>
+        <if test="activityType == 1"><!--自营——商品数量-->
+            COUNT(ab.biz_id) goodsNum
+        </if>
+        FROM share_activity sa LEFT JOIN share_activity_additional saa ON saa.activity_id = sa.id
+        <if test="activityType == 1"><!--自营——商品数量-->
+            LEFT JOIN activity_bizs ab on ab.activity_id = sa.id
+        </if>
+        WHERE 1 = 1
+        <if test="status != null">
+            and sa.status = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="shopId != null "><!-- 店铺id-->
+            and sa.shop_id = #{shopId,jdbcType=VARCHAR}
+        </if>
+        <if test="activityType == 0 "><!-- 活动类型为pop，需要管理的表为null-->
+            and saa.type is null
+        </if>
+        <if test="activityType == 1 "><!-- 活动类型为自营,type=1-->
+            and saa.type = 1
+        </if>
+        <if test="creator !=null "><!-- 创建者-->
+            and and sa.creator = #{creator,jdbcType=VARCHAR}
+        </if>
+        AND sa.id IN (
+        SELECT DISTINCT
+        ads.activity_id
+        FROM
+        activity_data_statistical ads
+        INNER JOIN activity_data_statistical_additional adsa ON ads.id = adsa.statistical_id
+        WHERE ads.is_delete = 0
+        <if test="bizType != null">
+            and ads.biz_type = #{bizType,jdbcType=INTEGER}
+        </if>
+        <if test="activityId != null">
+            and ads.activity_id = #{activityId,jdbcType=BIGINT}
+        </if>
+        <if test="startDate != null and endDate != null">
+            and ads.statistical_date BETWEEN #{startDate,jdbcType=BIGINT} AND #{endDate,jdbcType=BIGINT}
+        </if>
+        <if test="firstCategory != null "><!-- 一级分类-->
+            and adsa.category LIKE concat('%',#{firstCategory,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="secondCategory != null "><!-- 二级分类-->
+            and adsa.category LIKE concat('%',#{secondCategory,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="thirdCategory != null "><!-- 三级分类-->
+            and adsa.category LIKE concat('%',#{thirdCategory,jdbcType=VARCHAR},'%')
+        </if>
+        )
+    </select>
+
+    <!-- 统计参与店铺/ERP数量 by lipengcheng 2018.7.26 -->
+    <select id="getShopOrErpSum" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT
+        <if test="activityType == 0"><!--pop——店铺个数-->
+            count(sa.shop_id)
+        </if>
+        <if test="activityType == 1"><!--自营——ERP数量-->
+            count(sa.creator)
+        </if>
+        <if test="activityType == null"><!-- pop+自营-->
+            count(sa.creator)
+        </if>
+        FROM share_activity sa LEFT JOIN share_activity_additional saa ON saa.activity_id = sa.id
+        WHERE 1 = 1
+        <if test="status != null">
+            and sa.status = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="shopId != null "><!-- 店铺id-->
+            and sa.shop_id = #{shopId,jdbcType=VARCHAR}
+        </if>
+        <if test="activityType == 0 "><!-- 活动类型为pop，需要管理的表为null-->
+            and saa.type is null
+        </if>
+        <if test="activityType == 1 "><!-- 活动类型为自营,type=1-->
+            and saa.type = 1
+        </if>
+        <if test="creator !=null "><!-- 创建者-->
+            and and sa.creator = #{creator,jdbcType=VARCHAR}
+        </if>
+        AND sa.id IN (
+        SELECT DISTINCT
+        ads.activity_id
+        FROM
+        activity_data_statistical ads
+        INNER JOIN activity_data_statistical_additional adsa ON ads.id = adsa.statistical_id
+        WHERE ads.is_delete = 0
+        <if test="bizType != null">
+            and ads.biz_type = #{bizType,jdbcType=INTEGER}
+        </if>
+        <if test="activityId != null">
+            and ads.activity_id = #{activityId,jdbcType=BIGINT}
+        </if>
+        <if test="startDate != null and endDate != null">
+            and ads.statistical_date BETWEEN #{startDate,jdbcType=BIGINT} AND #{endDate,jdbcType=BIGINT}
+        </if>
+        <if test="firstCategory != null "><!-- 一级分类-->
+            and adsa.category LIKE concat('%',#{firstCategory,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="secondCategory != null "><!-- 二级分类-->
+            and adsa.category LIKE concat('%',#{secondCategory,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="thirdCategory != null "><!-- 三级分类-->
+            and adsa.category LIKE concat('%',#{thirdCategory,jdbcType=VARCHAR},'%')
+        </if>
+        )
+    </select>
+
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from activity_data_statistical
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from activity_data_statistical
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insertSelective" parameterType="com.jd.m.cms.bjshare.domain.po.ActivityDataStatistical" >
-    insert into activity_data_statistical
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="creator != null" >
-        creator,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="modifier != null" >
-        modifier,
-      </if>
-      <if test="modifyTime != null" >
-        modify_time,
-      </if>
-      <if test="isDelete != null" >
-        is_delete,
-      </if>
-      <if test="bizid != null" >
-        bizid,
-      </if>
-      <if test="bizType != null" >
-        biz_type,
-      </if>
-      <if test="pageUv != null" >
-        page_uv,
-      </if>
-      <if test="activityId != null" >
-        activity_id,
-      </if>
-      <if test="venderId != null" >
-        vender_id,
-      </if>
-      <if test="statisticalTime != null" >
-        statistical_time,
-      </if>
-      <if test="statisticalDate != null" >
-        statistical_date,
-      </if>
-      <if test="activityName != null" >
-        activity_name,
-      </if>
-      <if test="clickNumber != null" >
-        click_number,
-      </if>
-      <if test="clickSuccessUv != null" >
-        click_success_uv,
-      </if>
-      <if test="openNumber != null" >
-        open_number,
-      </if>
-      <if test="openSuccessUv != null" >
-        open_success_uv,
-      </if>
-      <if test="orderNumber != null" >
-        order_number,
-      </if>
-      <if test="orderAmount != null" >
-        order_amount,
-      </if>
-      <if test="drainageAvgNum != null" >
-        drainage_avg_num,
-      </if>
-      <if test="importDau != null" >
-        import_dau,
-      </if>
-      <if test="couponUsedAmount != null" >
-        coupon_used_amount,
-      </if>
-      <if test="beanUsedAmount != null" >
-        bean_used_amount,
-      </if>
-      <if test="couponCostAmount != null" >
-        coupon_cost_amount,
-      </if>
-      <if test="beanCostAmount != null" >
-        bean_cost_amount,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="creator != null" >
-        #{creator,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifier != null" >
-        #{modifier,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyTime != null" >
-        #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null" >
-        #{isDelete,jdbcType=INTEGER},
-      </if>
-      <if test="bizid != null" >
-        #{bizid,jdbcType=VARCHAR},
-      </if>
-      <if test="bizType != null" >
-        #{bizType,jdbcType=INTEGER},
-      </if>
-      <if test="pageUv != null" >
-        #{pageUv,jdbcType=BIGINT},
-      </if>
-      <if test="activityId != null" >
-        #{activityId,jdbcType=BIGINT},
-      </if>
-      <if test="venderId != null" >
-        #{venderId,jdbcType=BIGINT},
-      </if>
-      <if test="statisticalTime != null" >
-        #{statisticalTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="statisticalDate != null" >
-        #{statisticalDate,jdbcType=BIGINT},
-      </if>
-      <if test="activityName != null" >
-        #{activityName,jdbcType=VARCHAR},
-      </if>
-      <if test="clickNumber != null" >
-        #{clickNumber,jdbcType=BIGINT},
-      </if>
-      <if test="clickSuccessUv != null" >
-        #{clickSuccessUv,jdbcType=BIGINT},
-      </if>
-      <if test="openNumber != null" >
-        #{openNumber,jdbcType=BIGINT},
-      </if>
-      <if test="openSuccessUv != null" >
-        #{openSuccessUv,jdbcType=BIGINT},
-      </if>
-      <if test="orderNumber != null" >
-        #{orderNumber,jdbcType=BIGINT},
-      </if>
-      <if test="orderAmount != null" >
-        #{orderAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="drainageAvgNum != null" >
-        #{drainageAvgNum,jdbcType=BIGINT},
-      </if>
-      <if test="importDau != null" >
-        #{importDau,jdbcType=BIGINT},
-      </if>
-      <if test="couponUsedAmount != null" >
-        #{couponUsedAmount,jdbcType=BIGINT},
-      </if>
-      <if test="beanUsedAmount != null" >
-        #{beanUsedAmount,jdbcType=BIGINT},
-      </if>
-      <if test="couponCostAmount != null" >
-        #{couponCostAmount,jdbcType=BIGINT},
-      </if>
-      <if test="beanCostAmount != null" >
-        #{beanCostAmount,jdbcType=BIGINT},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jd.m.cms.bjshare.domain.po.ActivityDataStatistical" >
-    update activity_data_statistical
-    <set >
-      <if test="creator != null" >
-        creator = #{creator,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifier != null" >
-        modifier = #{modifier,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyTime != null" >
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isDelete != null" >
-        is_delete = #{isDelete,jdbcType=INTEGER},
-      </if>
-      <if test="bizid != null" >
-        bizid = #{bizid,jdbcType=VARCHAR},
-      </if>
-      <if test="bizType != null" >
-        biz_type = #{bizType,jdbcType=INTEGER},
-      </if>
-      <if test="pageUv != null" >
-        page_uv = #{pageUv,jdbcType=BIGINT},
-      </if>
-      <if test="activityId != null" >
-        activity_id = #{activityId,jdbcType=BIGINT},
-      </if>
-      <if test="venderId != null" >
-        vender_id = #{venderId,jdbcType=BIGINT},
-      </if>
-      <if test="statisticalTime != null" >
-        statistical_time = #{statisticalTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="statisticalDate != null" >
-        statistical_date = #{statisticalDate,jdbcType=BIGINT},
-      </if>
-      <if test="activityName != null" >
-        activity_name = #{activityName,jdbcType=VARCHAR},
-      </if>
-      <if test="clickNumber != null" >
-        click_number = #{clickNumber,jdbcType=BIGINT},
-      </if>
-      <if test="clickSuccessUv != null" >
-        click_success_uv = #{clickSuccessUv,jdbcType=BIGINT},
-      </if>
-      <if test="openNumber != null" >
-        open_number = #{openNumber,jdbcType=BIGINT},
-      </if>
-      <if test="openSuccessUv != null" >
-        open_success_uv = #{openSuccessUv,jdbcType=BIGINT},
-      </if>
-      <if test="orderNumber != null" >
-        order_number = #{orderNumber,jdbcType=BIGINT},
-      </if>
-      <if test="orderAmount != null" >
-        order_amount = #{orderAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="drainageAvgNum != null" >
-        drainage_avg_num = #{drainageAvgNum,jdbcType=BIGINT},
-      </if>
-      <if test="importDau != null" >
-        import_dau = #{importDau,jdbcType=BIGINT},
-      </if>
-      <if test="couponUsedAmount != null" >
-        coupon_used_amount = #{couponUsedAmount,jdbcType=BIGINT},
-      </if>
-      <if test="beanUsedAmount != null" >
-        bean_used_amount = #{beanUsedAmount,jdbcType=BIGINT},
-      </if>
-      <if test="couponCostAmount != null" >
-        coupon_cost_amount = #{couponCostAmount,jdbcType=BIGINT},
-      </if>
-      <if test="beanCostAmount != null" >
-        bean_cost_amount = #{beanCostAmount,jdbcType=BIGINT},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+    <insert id="insertSelective" parameterType="ActivityDataStatistical">
+        insert into activity_data_statistical
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="bizid != null">
+                bizid,
+            </if>
+            <if test="bizType != null">
+                biz_type,
+            </if>
+            <if test="pageUv != null">
+                page_uv,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="venderId != null">
+                vender_id,
+            </if>
+            <if test="statisticalTime != null">
+                statistical_time,
+            </if>
+            <if test="statisticalDate != null">
+                statistical_date,
+            </if>
+            <if test="activityName != null">
+                activity_name,
+            </if>
+            <if test="clickNumber != null">
+                click_number,
+            </if>
+            <if test="clickSuccessUv != null">
+                click_success_uv,
+            </if>
+            <if test="openNumber != null">
+                open_number,
+            </if>
+            <if test="openSuccessUv != null">
+                open_success_uv,
+            </if>
+            <if test="orderNumber != null">
+                order_number,
+            </if>
+            <if test="orderAmount != null">
+                order_amount,
+            </if>
+            <if test="drainageAvgNum != null">
+                drainage_avg_num,
+            </if>
+            <if test="importDau != null">
+                import_dau,
+            </if>
+            <if test="couponUsedAmount != null">
+                coupon_used_amount,
+            </if>
+            <if test="beanUsedAmount != null">
+                bean_used_amount,
+            </if>
+            <if test="couponCostAmount != null">
+                coupon_cost_amount,
+            </if>
+            <if test="beanCostAmount != null">
+                bean_cost_amount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="bizid != null">
+                #{bizid,jdbcType=VARCHAR},
+            </if>
+            <if test="bizType != null">
+                #{bizType,jdbcType=INTEGER},
+            </if>
+            <if test="pageUv != null">
+                #{pageUv,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=BIGINT},
+            </if>
+            <if test="venderId != null">
+                #{venderId,jdbcType=BIGINT},
+            </if>
+            <if test="statisticalTime != null">
+                #{statisticalTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="statisticalDate != null">
+                #{statisticalDate,jdbcType=BIGINT},
+            </if>
+            <if test="activityName != null">
+                #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="clickNumber != null">
+                #{clickNumber,jdbcType=BIGINT},
+            </if>
+            <if test="clickSuccessUv != null">
+                #{clickSuccessUv,jdbcType=BIGINT},
+            </if>
+            <if test="openNumber != null">
+                #{openNumber,jdbcType=BIGINT},
+            </if>
+            <if test="openSuccessUv != null">
+                #{openSuccessUv,jdbcType=BIGINT},
+            </if>
+            <if test="orderNumber != null">
+                #{orderNumber,jdbcType=BIGINT},
+            </if>
+            <if test="orderAmount != null">
+                #{orderAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="drainageAvgNum != null">
+                #{drainageAvgNum,jdbcType=BIGINT},
+            </if>
+            <if test="importDau != null">
+                #{importDau,jdbcType=BIGINT},
+            </if>
+            <if test="couponUsedAmount != null">
+                #{couponUsedAmount,jdbcType=BIGINT},
+            </if>
+            <if test="beanUsedAmount != null">
+                #{beanUsedAmount,jdbcType=BIGINT},
+            </if>
+            <if test="couponCostAmount != null">
+                #{couponCostAmount,jdbcType=BIGINT},
+            </if>
+            <if test="beanCostAmount != null">
+                #{beanCostAmount,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="ActivityDataStatistical">
+        update activity_data_statistical
+        <set>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=INTEGER},
+            </if>
+            <if test="bizid != null">
+                bizid = #{bizid,jdbcType=VARCHAR},
+            </if>
+            <if test="bizType != null">
+                biz_type = #{bizType,jdbcType=INTEGER},
+            </if>
+            <if test="pageUv != null">
+                page_uv = #{pageUv,jdbcType=BIGINT},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=BIGINT},
+            </if>
+            <if test="venderId != null">
+                vender_id = #{venderId,jdbcType=BIGINT},
+            </if>
+            <if test="statisticalTime != null">
+                statistical_time = #{statisticalTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="statisticalDate != null">
+                statistical_date = #{statisticalDate,jdbcType=BIGINT},
+            </if>
+            <if test="activityName != null">
+                activity_name = #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="clickNumber != null">
+                click_number = #{clickNumber,jdbcType=BIGINT},
+            </if>
+            <if test="clickSuccessUv != null">
+                click_success_uv = #{clickSuccessUv,jdbcType=BIGINT},
+            </if>
+            <if test="openNumber != null">
+                open_number = #{openNumber,jdbcType=BIGINT},
+            </if>
+            <if test="openSuccessUv != null">
+                open_success_uv = #{openSuccessUv,jdbcType=BIGINT},
+            </if>
+            <if test="orderNumber != null">
+                order_number = #{orderNumber,jdbcType=BIGINT},
+            </if>
+            <if test="orderAmount != null">
+                order_amount = #{orderAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="drainageAvgNum != null">
+                drainage_avg_num = #{drainageAvgNum,jdbcType=BIGINT},
+            </if>
+            <if test="importDau != null">
+                import_dau = #{importDau,jdbcType=BIGINT},
+            </if>
+            <if test="couponUsedAmount != null">
+                coupon_used_amount = #{couponUsedAmount,jdbcType=BIGINT},
+            </if>
+            <if test="beanUsedAmount != null">
+                bean_used_amount = #{beanUsedAmount,jdbcType=BIGINT},
+            </if>
+            <if test="couponCostAmount != null">
+                coupon_cost_amount = #{couponCostAmount,jdbcType=BIGINT},
+            </if>
+            <if test="beanCostAmount != null">
+                bean_cost_amount = #{beanCostAmount,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 
-    <!-- 按日期分组查数据看板列表 -->
-    <select id="getDataListByDate" resultMap="BaseResultMap" parameterType="java.util.Map">
-        select ads.statistical_time,SUM(ads.page_uv) page_uv,SUM(ads.click_number) click_number,
-        SUM(ads.click_success_uv) click_success_uv,SUM(ads.open_number) open_number,SUM(ads.open_success_uv) open_success_uv,
-        SUM(ads.import_dau) import_dau,avg(ads.drainage_avg_num) drainage_avg_num,SUM(ads.order_number) order_number,
-        SUM(ads.order_amount) order_amount,SUM(ads.coupon_cost_amount) coupon_cost_amount,SUM(ads.bean_cost_amount) bean_cost_amount,
-        SUM(ads.coupon_used_amount) coupon_used_amount,SUM(ads.bean_used_amount) bean_used_amount
-        from activity_data_statistical ads
-        left join share_activity sa on ads.activity_id = sa.id
-        where 1=1 and ads.is_delete = 0
-        <if test="venderId != null" >
-            and ads.vender_id = #{venderId,jdbcType=BIGINT}
+    <!-- 按日期分组——采销 by lipengcheng 2018.7.31-->
+    <select id="getDataListByDate" resultMap="activityDataStatisticalExtendMap" parameterType="java.util.Map">
+        SELECT
+        <if test="groupby != null ">
+            ads.statistical_time,<!-- 统计时间-->
         </if>
-        <if test="bizType != null" >
-            and ads.biz_type = #{bizType,jdbcType=INTEGER}
+        IFNULL(SUM(ads.page_uv),0) page_uv,<!-- 商祥UV-->
+        IFNULL(SUM(adsa.click_number_uv),0) click_number_uv,<!-- 分享有礼点击UV-->
+        IFNULL(SUM(ads.click_success_uv),0) click_success_uv,<!-- 点击分享流程成功的总次数-->
+        IFNULL( SUM(adsa.share_success_uv),0) share_success_uv,<!-- 分享成功UV-->
+        IFNULL(SUM(ads.open_number),0) open_number,<!-- 点击分享链接总次数-->
+        IFNULL(SUM(ads.open_success_uv),0) open_success_uv,<!--点击分享链接UV -->
+        IFNULL(SUM(ads.order_number),0) order_number,<!-- 引入订单数量-->
+        IFNULL(SUM(ads.order_amount),0) order_amount,<!--引入订单金额 -->
+        IFNULL(SUM(adsa.actual_order_number),0) actual_order_number,<!--有效订单数量 -->
+        IFNULL(SUM(adsa.done_order_amount),0) done_order_amount,<!-- 完成订单金额-->
+        IFNULL(SUM(adsa.done_order_number),0) done_order_number,<!--完成订单数量 -->
+        IFNULL(SUM(adsa.actual_order_amount),0) actual_order_amount,<!-- 有效订单金额-->
+        IFNULL(SUM(ads.coupon_cost_amount),0) coupon_cost_amount,<!--发放优惠券张数 -->
+        IFNULL(SUM(ads.coupon_used_amount),0) coupon_used_amount,<!--使用张数 -->
+        IFNULL(SUM(adsa.coupon_order_number),0) coupon_order_number,<!--券引入订单 -->
+        IFNULL(SUM(adsa.coupon_order_amount),0) coupon_order_amount,<!--券引入订单金额-->
+        IFNULL(SUM(ads.bean_cost_amount),0) bean_cost_amount,<!--发放京豆数量 -->
+        IFNULL(SUM(ads.bean_used_amount),0) bean_used_amount,<!-- 使用京豆数量-->
+        IFNULL(SUM(adsa.share_open_num),0) share_open_num,<!--分享者打开次数-->
+        IFNULL(SUM(adsa.shared_open_num),0) shared_open_num,<!--被分享者打开次数-->
+        IFNULL(SUM(adsa.share_open_uv),0) share_open_uv,  <!--分享者打开人数-->
+        IFNULL(SUM(adsa.shared_open_uv),0) shared_open_uv,<!--被分享者打开人数-->
+        IFNULL(SUM(ads.import_dau),0) import_dau,<!--引入DAU-->
+        IFNULL(COUNT(DISTINCT ads.activity_id),0) activityNum<!--活动数-->
+        FROM
+        activity_data_statistical ads
+        INNER JOIN activity_data_statistical_additional adsa ON adsa.statistical_id = ads.id
+        WHERE
+        1 = 1
+        AND ads.is_delete = 0
+        <if test="creatorList != null">
+            AND ads.creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
         </if>
-        <if test="activityId != null" >
-            and ads.activity_id = #{activityId,jdbcType=BIGINT}
+        <if test="bizType != null">
+            and ads.biz_type = #{bizType}
         </if>
-        <if test="status != null" >
-            and sa.status = #{status,jdbcType=INTEGER}
+        <if test="activityId != null">
+            and ads.activity_id = #{activityId}
         </if>
-        <if test="startDate != null and endDate != null" >
-            and ads.statistical_date BETWEEN #{startDate,jdbcType=BIGINT} AND #{endDate,jdbcType=BIGINT}
+        <if test="status != null">
+            and adsa.activity_status = #{status}
         </if>
-        group by ads.statistical_time
-        order by ads.statistical_time desc
+        <if test="startDate != null and endDate != null">
+            and ads.statistical_date BETWEEN #{startDate} AND #{endDate}
+        </if>
+        <if test="firstCategory != null and firstCategory != null">
+            and adsa.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null and secondCategory != null">
+            and adsa.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null and thirdCategory != null">
+            and adsa.third_category = #{thirdCategory}
+        </if>
+        <if test="groupby != null ">
+            group by ads.statistical_time
+            <if test="sortFiled == null and sortValue == null">
+              order by ads.statistical_time desc
+            </if>
+            <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 1">
+                ORDER BY click_success_uv ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 2">
+                ORDER BY click_success_uv DESC
+            </if>
+            <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 1">
+                ORDER BY open_success_uv ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 2">
+                ORDER BY open_success_uv DESC
+            </if>
+            <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 1">
+                ORDER BY order_number ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 2">
+                ORDER BY order_number DESC
+            </if>
+            <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 1">
+                ORDER BY order_amount ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 2">
+                ORDER BY order_amount DESC
+            </if>
+        </if>
     </select>
 
-    <resultMap id="statisticalResultMap" type="com.jd.m.cms.bjshare.domain.vo.ActivityDataStatisticalVo" extends="BaseResultMap">
+    <!--时间维度统计总条数-->
+    <select id="getDataListCountByDate" resultType="java.lang.Long" parameterType="java.util.Map">
+        SELECT
+            count(*)
+        FROM
+        activity_data_statistical ads
+        INNER JOIN activity_data_statistical_additional adsa ON adsa.statistical_id = ads.id
+        WHERE
+        1 = 1
+        AND ads.is_delete = 0
+        <if test="creatorList != null">
+            AND ads.creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
+        </if>
+        <if test="bizType != null">
+            and ads.biz_type = #{bizType}
+        </if>
+        <if test="activityId != null">
+            and ads.activity_id = #{activityId}
+        </if>
+        <if test="status != null">
+            and adsa.activity_status = #{status}
+        </if>
+        <if test="startDate != null and endDate != null">
+            and ads.statistical_date BETWEEN #{startDate} AND #{endDate}
+        </if>
+        <if test="firstCategory != null and firstCategory != null">
+            and adsa.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null and secondCategory != null">
+            and adsa.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null and thirdCategory != null">
+            and adsa.third_category = #{thirdCategory}
+        </if>
+
+    </select>
+    <!-- 按活动分组——采销 by lipengcheng 2018.8.14-->
+    <select id="getActivityListByDate" resultMap="activityDataStatisticalExtendMap" parameterType="java.util.Map">
+        SELECT
+        <if test="groupby != null ">
+            ads.activity_name,
+            ads.activity_id,
+            ads.creator,
+            case ads.biz_type when 1 then '商详' when 2 then '店铺' when 3 then '通天塔' end
+            biz_type_name,<!-- 1、商详；2、店铺；3、通天塔-->
+        </if>
+        IFNULL(SUM(ads.page_uv),0) page_uv,<!-- 商祥UV-->
+        IFNULL(SUM(adsa.click_number_uv),0) click_number_uv,<!-- 分享有礼点击UV-->
+        IFNULL(SUM(ads.click_success_uv),0) click_success_uv,<!-- 点击分享流程成功的总次数-->
+        IFNULL( SUM(adsa.share_success_uv),0) share_success_uv,<!-- 分享成功UV-->
+        IFNULL(SUM(ads.open_number),0) open_number,<!-- 点击分享链接总次数-->
+        IFNULL(SUM(ads.open_success_uv),0) open_success_uv,<!--点击分享链接UV -->
+        IFNULL(SUM(ads.order_number),0) order_number,<!-- 引入订单数量-->
+        IFNULL(SUM(ads.order_amount),0) order_amount,<!--引入订单金额 -->
+        IFNULL(SUM(adsa.actual_order_number),0) actual_order_number,<!--有效订单数量 -->
+        IFNULL(SUM(adsa.actual_order_amount),0) actual_order_amount,<!-- 有效订单金额-->
+        IFNULL(SUM(adsa.done_order_amount),0) done_order_amount,<!-- 完成订单金额-->
+        IFNULL(SUM(adsa.done_order_number),0) done_order_number,<!--完成订单数量 -->
+        IFNULL(SUM(ads.coupon_cost_amount),0) coupon_cost_amount,<!--发放优惠券张数 -->
+        IFNULL(SUM(ads.coupon_used_amount),0) coupon_used_amount,<!--使用张数 -->
+        IFNULL(SUM(adsa.coupon_order_number),0) coupon_order_number,<!--券引入订单 -->
+        IFNULL(SUM(adsa.coupon_order_amount),0) coupon_order_amount,<!--券引入订单金额-->
+        IFNULL(SUM(ads.bean_cost_amount),0) bean_cost_amount,<!--发放京豆数量 -->
+        IFNULL(SUM(ads.bean_used_amount),0) bean_used_amount,<!-- 使用京豆数量-->
+        IFNULL(SUM(adsa.share_open_num),0) share_open_num,<!--分享者打开次数-->
+        IFNULL(SUM(adsa.shared_open_num),0) shared_open_num,<!--被分享者打开次数-->
+        IFNULL(SUM(adsa.share_open_uv),0) share_open_uv,  <!--分享者打开人数-->
+        IFNULL(SUM(adsa.shared_open_uv),0) shared_open_uv<!--被分享者打开人数-->
+        FROM
+        activity_data_statistical ads
+        INNER JOIN activity_data_statistical_additional adsa ON adsa.statistical_id = ads.id
+        WHERE
+        1 = 1
+        AND ads.is_delete = 0
+        <if test="creatorList != null">
+            AND ads.creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
+        </if>
+        <if test="bizType != null">
+            and ads.biz_type = #{bizType}
+        </if>
+        <if test="activityId != null">
+            and ads.activity_id = #{activityId}
+        </if>
+        <if test="status != null">
+            and adsa.activity_status = #{status}
+        </if>
+        <if test="startDate != null and endDate != null">
+            and ads.statistical_date BETWEEN #{startDate} AND #{endDate}
+        </if>
+        <if test="firstCategory != null and firstCategory != null">
+            and adsa.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null and secondCategory != null">
+            and adsa.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null and thirdCategory != null">
+            and adsa.third_category = #{thirdCategory}
+        </if>
+        <if test="groupby != null ">
+            group by ads.activity_name,ads.activity_id, ads.creator, biz_type_name
+
+            <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 1">
+                ORDER BY click_success_uv ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 2">
+                ORDER BY click_success_uv DESC
+            </if>
+            <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 1">
+                ORDER BY open_success_uv ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 2">
+                ORDER BY open_success_uv DESC
+            </if>
+            <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 1">
+                ORDER BY order_number ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 2">
+                ORDER BY order_number DESC
+            </if>
+            <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 1">
+                ORDER BY order_amount ASC
+            </if>
+            <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 2">
+                ORDER BY order_amount DESC
+            </if>
+        </if>
+    </select>
+
+    <resultMap id="statisticalResultMap" type="com.jd.m.cms.bjshare.domain.vo.ActivityDataStatisticalVo"
+               extends="BaseResultMap">
         <result property="shopId" column="shop_id"/>
     </resultMap>
     <!-- 按活动id分组查数据看板列表 -->
     <select id="getDataListByActivityId" resultMap="statisticalResultMap" parameterType="java.util.Map">
-        select sa.shop_id,sa.activity_name,ads.activity_id,ads.biz_type,SUM(ads.page_uv) page_uv,SUM(ads.click_number) click_number,SUM(ads.click_success_uv) click_success_uv,
+        select sa.shop_id,sa.activity_name,ads.activity_id,ads.biz_type,SUM(ads.page_uv) page_uv,SUM(ads.click_number)
+        click_number,SUM(ads.click_success_uv) click_success_uv,
         SUM(ads.open_number) open_number,SUM(ads.open_success_uv) open_success_uv,
         SUM(ads.import_dau) import_dau,avg(ads.drainage_avg_num) drainage_avg_num,SUM(ads.order_number) order_number,
-        SUM(ads.order_amount) order_amount,SUM(ads.coupon_cost_amount) coupon_cost_amount,SUM(ads.bean_cost_amount) bean_cost_amount,
+        SUM(ads.order_amount) order_amount,SUM(ads.coupon_cost_amount) coupon_cost_amount,SUM(ads.bean_cost_amount)
+        bean_cost_amount,
         SUM(ads.coupon_used_amount) coupon_used_amount,SUM(ads.bean_used_amount) bean_used_amount
         from activity_data_statistical ads
-        left join share_activity sa on ads.activity_id = sa.id
+        INNER join share_activity sa on ads.activity_id = sa.id
         where 1=1 and ads.is_delete = 0
-        <if test="venderId != null" >
+        <if test="venderId != null">
             and ads.vender_id = #{venderId,jdbcType=BIGINT}
         </if>
-        <if test="bizType != null" >
+        <if test="bizType != null">
             and ads.biz_type = #{bizType,jdbcType=INTEGER}
         </if>
-        <if test="activityId != null" >
+        <if test="activityId != null">
             and ads.activity_id = #{activityId,jdbcType=BIGINT}
         </if>
-        <if test="status != null" >
+        <if test="status != null">
             and sa.status = #{status,jdbcType=INTEGER}
         </if>
-        <if test="startDate != null and endDate != null" >
+        <if test="startDate != null and endDate != null">
             and ads.statistical_date BETWEEN #{startDate,jdbcType=BIGINT} AND #{endDate,jdbcType=BIGINT}
         </if>
         group by ads.activity_id,sa.activity_name,ads.biz_type,sa.shop_id
@@ -376,58 +851,347 @@
         </if>
     </select>
 
-    <!-- 获取spu或shop级别的数据列表 -->
-    <select id="getBizList" resultMap="BaseResultMap" parameterType="java.util.Map">
-        select ads.bizid,ads.biz_type,SUM(ads.page_uv) page_uv,SUM(ads.click_number) click_number,SUM(ads.click_success_uv) click_success_uv,
-        SUM(ads.open_number) open_number,SUM(ads.open_success_uv) open_success_uv,
-        SUM(ads.import_dau) import_dau,avg(ads.drainage_avg_num) drainage_avg_num,SUM(ads.order_number) order_number,
-        SUM(ads.order_amount) order_amount,SUM(ads.coupon_cost_amount) coupon_cost_amount,SUM(ads.bean_cost_amount) bean_cost_amount,
-        SUM(ads.coupon_used_amount) coupon_used_amount,SUM(ads.bean_used_amount) bean_used_amount
-        from activity_data_statistical ads
-        where 1=1
-        and ads.is_delete = 0
-        <if test="venderId != null" >
-            and ads.vender_id = #{venderId,jdbcType=BIGINT}
-        </if>
-        <if test="activityId != null" >
+    <!-- 获取spu或shop级别的数据列表 by lipengcheng 2018.8.20 -->
+    <select id="getBizList" resultMap="activityDataStatisticalExtendMap" parameterType="java.util.Map">
+        SELECT
+        ads.bizid,
+        CASE ads.biz_type WHEN 1 THEN '商详' WHEN 2 THEN '店铺' WHEN 3 THEN '通天塔' end biz_type_name,<!--入口-->
+        SUM(ads.page_uv) page_uv,<!--页面UV -->
+        sum(adsa.click_number_uv) click_number_uv,<!--分享有礼点击UV -->
+        SUM(ads.click_success_uv) click_success_uv,<!--分享次数 -->
+        SUM(adsa.share_success_uv) share_success_uv,<!--分享UV -->
+        SUM(ads.open_number) open_number,<!--打开次数 -->
+        SUM(ads.open_success_uv) open_success_uv,<!--打开页面UV -->
+        SUM(adsa.share_open_num)share_open_num,<!--分享者打开次数-->
+        SUM(adsa.shared_open_num) shared_open_num,<!--被分享者打开次数-->
+        SUM(adsa.share_open_uv) share_open_uv,  <!--分享者打开人数-->
+        SUM(adsa.shared_open_uv) shared_open_uv,<!--被分享者打开人数-->
+        avg(ads.drainage_avg_num) drainage_avg_num,<!--平均每个分享者引流人数-->
+        SUM(ads.order_number) order_number,<!--引入订单量 -->
+        SUM(ads.order_amount) order_amount,<!--引入订单金额 -->
+        SUM(adsa.actual_order_number) actual_order_number,<!--有效订单数量 -->
+        SUM(adsa.actual_order_amount) actual_order_amount,<!-- 有效订单金额-->
+        SUM(ads.coupon_used_amount) coupon_used_amount,<!--已使用费用总计 -->
+        SUM(ads.bean_used_amount) bean_used_amount<!--已使用费用总计 -->
+        FROM
+        activity_data_statistical ads
+        INNER JOIN activity_data_statistical_additional adsa on statistical_id=ads.id
+        WHERE
+        1 = 1
+        AND ads.is_delete = 0
+        <!--AND adsa.activity_type=1-->   <!--商家类型，pop：0；自营：1 -->
+        <if test="activityId != null">
             and ads.activity_id = #{activityId,jdbcType=BIGINT}
         </if>
-        <if test="queryDate != null" >
+        <if test="queryDate != null">
             and ads.statistical_date = #{queryDate,jdbcType=BIGINT}
         </if>
-        <if test="bizid != null and bizid !='' " >
-            and ads.bizid = #{bizid,jdbcType=VARCHAR}
+        <if test="bizId != null and bizId !=''">
+            and ads.bizid = #{bizId,jdbcType=VARCHAR}
+        </if>
+        <if test="firstCategory != null and firstCategory != null">
+            and adsa.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null and secondCategory != null">
+            and adsa.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null and thirdCategory != null">
+            and adsa.third_category = #{thirdCategory}
         </if>
         group by ads.bizid,ads.biz_type
         <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 1">
-            ORDER BY click_success_uv ASC
+            ORDER BY click_success_uv ASC<!--分享次数-升序 -->
         </if>
         <if test="sortFiled != null and sortFiled == 1 and sortValue != null and sortValue == 2">
             ORDER BY click_success_uv DESC
         </if>
         <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 1">
-            ORDER BY open_success_uv ASC
-        </if>
-        <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 2">
-            ORDER BY open_success_uv DESC
-        </if>
-        <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 1">
             ORDER BY order_number ASC
         </if>
-        <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 2">
+        <if test="sortFiled != null and sortFiled == 2 and sortValue != null and sortValue == 2">
             ORDER BY order_number DESC
         </if>
-        <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 1">
+        <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 1">
             ORDER BY order_amount ASC
         </if>
-        <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 2">
+        <if test="sortFiled != null and sortFiled == 3 and sortValue != null and sortValue == 2">
             ORDER BY order_amount DESC
         </if>
-        <if test="sortFiled != null and sortFiled == 5 and sortValue != null and sortValue == 1">
-            ORDER BY import_dau ASC
+        <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 1">
+            ORDER BY open_success_uv ASC
         </if>
-        <if test="sortFiled != null and sortFiled == 5 and sortValue != null and sortValue == 2">
-            ORDER BY import_dau DESC
+        <if test="sortFiled != null and sortFiled == 4 and sortValue != null and sortValue == 2">
+            ORDER BY open_success_uv DESC
+        </if>
+    </select>    <!-- 自定义,通过活动id和bizid批量判断统计值是否存在-->
+    <select id="getYesterdayByActivityId" parameterType="java.util.Map"   resultType="com.jd.m.cms.bjshare.domain.po.ActivityDataStatistical">
+        select
+        t.id,t.activity_id,t.bizid
+        from activity_data_statistical t where
+        <foreach collection="list" index="index" item="item" open="(" separator=" or " close=")">
+            (t.activity_id=#{item.activityId} and t.bizid= #{item.bizid})
+        </foreach>
+
+        and
+        statistical_time between #{todayBegin} and #{todayEnd}
+    </select>
+
+    <!-- 统计附加表中的分享有礼icon点击uv  click_number_uv -->
+    <select id="countClick_number_uv" parameterType="java.util.Map" resultType="com.jd.m.cms.bjshare.domain.vo.UvData">
+        SELECT
+        log.activity_id as activityId,
+        count(DISTINCT log.upin) AS uvNum
+        FROM
+        activity_biz_id_click_log log
+		left join  share_activity sa on log.activity_id=sa.id
+        LEFT JOIN activity_bizs ab on ab.activity_id=log.activity_id
+        WHERE
+        log.time BETWEEN #{startDate} AND #{endDate}
+        AND log.STATUS = 0
+        AND log.source = 0
+        and log.upin is not null
+        <if test="firstCategory != null and firstCategory != null">
+            and ab.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null and secondCategory != null">
+            and ab.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null and thirdCategory != null">
+            and ab.third_category = #{thirdCategory}
+        </if>
+        and log.activity_id in
+        <foreach collection="list" index="index" item="item" open="(" separator=" , " close=")">
+          #{item}
+        </foreach>
+        GROUP BY
+        log.activity_id,
+        log.biz_id
+    </select>
+
+    <!--删除一天的所有数据-->
+    <delete id="test" parameterType="java.util.Map" >
+      delete from activity_data_statistical  where create_date BETWEEN  #{startDate,jdbcType=TIMESTAMP} and #{endDate,jdbcType=TIMESTAMP}
+    </delete>
+
+    <!-- 统计附加表中的分享有礼icon点击uv  click_number_uv -->
+    <select id="getClickNumberUv" parameterType="java.util.Map" resultType="com.jd.m.cms.bjshare.domain.vo.UvData">
+        SELECT
+        <choose>
+            <when test="groupby != null">
+                log.activity_id as activityId,
+                IFNULL(count(DISTINCT log.upin),0) as uvNum
+            </when>
+            <otherwise>
+                IFNULL(count(DISTINCT log.upin),0) as uvNum
+            </otherwise>
+        </choose>
+        FROM
+        activity_biz_id_click_log log
+        WHERE
+         log.STATUS = 0
+        AND log.source = 0
+        and log.upin is not null
+        <if test="startDate != null and endDate!=null">
+           and  log.time BETWEEN #{startDate} AND #{endDate}
+        </if>
+        <if test="activityId != null">
+            and log.activity_id = #{activityId}
+        </if>
+        <if test="bizType != null">
+            and log.activity_type = #{bizType}
+        </if>
+        <if test="status != null">
+            and log.activity_status = #{status}
+        </if>
+        <if test="firstCategory != null">
+            and log.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null">
+            and log.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null">
+            and log.third_category = #{thirdCategory}
+        </if>
+        <if test="creatorList != null">
+            AND log.activity_creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
+        </if>
+        <if test="activityIds != null">
+            AND log.activity_id IN
+            <foreach collection="activityIds" index="index" item="activityId" open="(" separator="," close=")">
+                #{activityId}
+            </foreach>
+        </if>
+        <if test="groupby != null">
+            GROUP BY log.activity_id
+        </if>
+    </select>
+
+
+    <!-- 统计分享成功UV   -->
+    <select id="getShareSuccessUv" parameterType="java.util.Map" resultType="com.jd.m.cms.bjshare.domain.vo.UvData">
+        SELECT
+        <choose>
+            <when test="groupby != null">
+                log.activity_id as activityId,
+                IFNULL(count(DISTINCT log.upin),0) as uvNum
+            </when>
+            <otherwise>
+                IFNULL( count(DISTINCT log.upin),0) as uvNum
+            </otherwise>
+        </choose>
+        FROM
+        activity_share_success_log log
+        WHERE
+         log. STATUS = 0
+        and log.upin is not null
+        <if test="startDate != null and endDate!=null">
+            and  log.time BETWEEN #{startDate} AND #{endDate}
+        </if>
+        <if test="activityId != null">
+            and log.activity_id = #{activityId}
+        </if>
+        <if test="bizType != null">
+            and log.activity_type = #{bizType}
+        </if>
+        <if test="status != null">
+            and log.activity_status = #{status}
+        </if>
+        <if test="firstCategory != null">
+            and log.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null">
+            and log.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null">
+            and log.third_category = #{thirdCategory}
+        </if>
+        <if test="creatorList != null">
+            AND log.activity_creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
+        </if>
+        <if test="activityIds != null">
+            AND log.activity_id IN
+            <foreach collection="activityIds" index="index" item="activityId" open="(" separator="," close=")">
+                #{activityId}
+            </foreach>
+        </if>
+        <if test="groupby != null">
+            GROUP BY  log.activity_id
+        </if>
+    </select>
+
+    <!-- 查询分享者打开UV—— -->
+    <select id="getShareOpenUv" parameterType="java.util.Map" resultType="com.jd.m.cms.bjshare.domain.vo.UvData">
+        SELECT
+        <choose>
+            <when test="groupby != null">
+                log.activity_id as activityId,
+                IFNULL(count(DISTINCT log.shared_pin),0) as uvNum
+            </when>
+            <otherwise>
+                IFNULL(count(DISTINCT log.shared_pin),0) as uvNum
+            </otherwise>
+        </choose>
+        FROM
+        share_url_click_log log
+        WHERE
+        log. STATUS = 0
+        AND log.reward_type =3
+        <if test="startDate != null and endDate!=null">
+            and  log.time BETWEEN #{startDate} AND #{endDate}
+        </if>
+        <if test="activityId != null">
+            and log.activity_id = #{activityId}
+        </if>
+        <if test="bizType != null">
+            and log.activity_type = #{bizType}
+        </if>
+        <if test="status != null">
+            and log.activity_status = #{status}
+        </if>
+        <if test="firstCategory != null">
+            and log.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null">
+            and log.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null">
+            and log.third_category = #{thirdCategory}
+        </if>
+        <if test="creatorList != null">
+            AND log.activity_creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
+        </if>
+        <if test="activityIds != null">
+            AND log.activity_id IN
+            <foreach collection="activityIds" index="index" item="activityId" open="(" separator="," close=")">
+                #{activityId}
+            </foreach>
+        </if>
+        <if test="groupby != null">
+            GROUP BY  log.activity_id
+        </if>
+    </select>
+
+    <!-- 查询被分享者成功UV—— -->
+    <select id="getSharedOpenUv" parameterType="java.util.Map" resultType="com.jd.m.cms.bjshare.domain.vo.UvData">
+        SELECT
+        <choose>
+            <when test="groupby != null">
+                log.activity_id as activityId,
+                IFNULL(count(DISTINCT log.shared_pin),0) as uvNum
+            </when>
+            <otherwise>
+                IFNULL(count(DISTINCT log.shared_pin),0)  as uvNum
+            </otherwise>
+        </choose>
+        FROM
+        share_url_click_log log
+        WHERE
+        log. STATUS = 0
+        AND log.reward_type =2
+        <if test="startDate != null and endDate!=null">
+            and  log.time BETWEEN #{startDate} AND #{endDate}
+        </if>
+        <if test="activityId != null">
+            and log.activity_id = #{activityId}
+        </if>
+        <if test="bizType != null">
+            and log.activity_type = #{bizType}
+        </if>
+        <if test="status != null">
+            and log.activity_status = #{status}
+        </if>
+        <if test="firstCategory != null">
+            and log.first_category = #{firstCategory}
+        </if>
+        <if test="secondCategory != null">
+            and log.second_category = #{secondCategory}
+        </if>
+        <if test="thirdCategory != null">
+            and log.third_category = #{thirdCategory}
+        </if>
+        <if test="creatorList != null">
+            AND log.activity_creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
+        </if>
+        <if test="activityIds != null">
+            AND log.activity_id IN
+            <foreach collection="activityIds" index="index" item="activityId" open="(" separator="," close=")">
+                #{activityId}
+            </foreach>
+        </if>
+        <if test="groupby != null">
+            GROUP BY  log.activity_id
         </if>
     </select>
 

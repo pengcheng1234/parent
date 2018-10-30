@@ -39,7 +39,4 @@ public interface ActivityBizsMapper {
      * 通过运维活动id获取的商品id数据列表
      */
     List<IdsAndAuditStatus> getThingIdsListByOperation(Map<String, Object> map);
-
-
-
 }

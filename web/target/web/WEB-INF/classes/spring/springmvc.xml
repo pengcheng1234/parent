@@ -24,4 +24,7 @@
         <constructor-arg value="0/5 * * * * ?"/>
     </bean>
 
+    <!-- 配置静态文件的映射访问路径-->
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+
 </beans>

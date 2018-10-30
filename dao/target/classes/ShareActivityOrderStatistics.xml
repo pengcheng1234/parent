@@ -1,359 +1,419 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jd.m.cms.bjshare.dao.ShareActivityOrderStatisticsDao" >
-  <resultMap id="BaseResultMap" type="ShareActivityOrderStatistics" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="creator" property="creator" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="create_date" property="createDate" jdbcType="BIGINT" />
-    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
-    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
-    <result column="modify_date" property="modifyDate" jdbcType="BIGINT" />
-    <result column="is_delete" property="isDelete" jdbcType="BIT" />
-    <result column="activity_id" property="activityId" jdbcType="BIGINT" />
-    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
-    <result column="spu_id" property="spuId" jdbcType="VARCHAR" />
-    <result column="sku_id" property="skuId" jdbcType="VARCHAR" />
-    <result column="amount" property="amount" jdbcType="DECIMAL" />
-    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
-    <result column="submit_date" property="submitDate" jdbcType="BIGINT" />
-    <result column="pin" property="pin" jdbcType="VARCHAR" />
-    <result column="used_coupon" property="usedCoupon" jdbcType="BIT" />
-    <result column="coupon_id" property="couponId" jdbcType="VARCHAR" />
-    <result column="coupon_type" property="couponType" jdbcType="TINYINT" />
-    <result column="coupon_des" property="couponDes" jdbcType="VARCHAR" />
-    <result column="coupon_send_type" property="couponSendType" jdbcType="TINYINT" />
-    <result column="coupon_send_time" property="couponSendTime" jdbcType="TIMESTAMP" />
-    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
-    <result column="token" property="token" jdbcType="VARCHAR" />
-    <result column="vender_id" property="venderId" jdbcType="BIGINT" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.ShareActivityOrderStatisticsDao">
+    <resultMap id="BaseResultMap" type="ShareActivityOrderStatistics">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="creator" property="creator" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="create_date" property="createDate" jdbcType="BIGINT"/>
+        <result column="modifier" property="modifier" jdbcType="VARCHAR"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_date" property="modifyDate" jdbcType="BIGINT"/>
+        <result column="is_delete" property="isDelete" jdbcType="BIT"/>
+        <result column="activity_id" property="activityId" jdbcType="BIGINT"/>
+        <result column="order_id" property="orderId" jdbcType="VARCHAR"/>
+        <result column="spu_id" property="spuId" jdbcType="VARCHAR"/>
+        <result column="sku_id" property="skuId" jdbcType="VARCHAR"/>
+        <result column="amount" property="amount" jdbcType="DECIMAL"/>
+        <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP"/>
+        <result column="submit_date" property="submitDate" jdbcType="BIGINT"/>
+        <result column="pin" property="pin" jdbcType="VARCHAR"/>
+        <result column="used_coupon" property="usedCoupon" jdbcType="BIT"/>
+        <result column="coupon_id" property="couponId" jdbcType="VARCHAR"/>
+        <result column="coupon_type" property="couponType" jdbcType="TINYINT"/>
+        <result column="coupon_des" property="couponDes" jdbcType="VARCHAR"/>
+        <result column="coupon_send_type" property="couponSendType" jdbcType="TINYINT"/>
+        <result column="coupon_send_time" property="couponSendTime" jdbcType="TIMESTAMP"/>
+        <result column="shop_id" property="shopId" jdbcType="BIGINT"/>
+        <result column="token" property="token" jdbcType="VARCHAR"/>
+        <result column="vender_id" property="venderId" jdbcType="BIGINT"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="order_status" property="orderStatus" jdbcType="VARCHAR"/>
+        <result column="biz_id" property="bizId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, creator, create_time, create_date, modifier, modify_time, modify_date, is_delete, 
     activity_id, order_id, spu_id, sku_id, amount, submit_time, submit_date, pin, used_coupon, 
-    coupon_id, coupon_type, coupon_des, coupon_send_type, coupon_send_time, shop_id, token, vender_id
+    coupon_id, coupon_type, coupon_des, coupon_send_type, coupon_send_time, shop_id, token, vender_id,status,order_status,biz_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from share_activity_order_statistics
-    where id = #{id,jdbcType=BIGINT}
-  </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from share_activity_order_statistics
+        where id = #{id,jdbcType=BIGINT}
+    </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from share_activity_order_statistics
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insertSelective" parameterType="ShareActivityOrderStatistics" >
-    insert into share_activity_order_statistics
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="creator != null" >
-        creator,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="modifier != null" >
-        modifier,
-      </if>
-      <if test="modifyTime != null" >
-        modify_time,
-      </if>
-      <if test="modifyDate != null" >
-        modify_date,
-      </if>
-      <if test="isDelete != null" >
-        is_delete,
-      </if>
-      <if test="activityId != null" >
-        activity_id,
-      </if>
-      <if test="orderId != null" >
-        order_id,
-      </if>
-      <if test="spuId != null" >
-        spu_id,
-      </if>
-      <if test="skuId != null" >
-        sku_id,
-      </if>
-      <if test="amount != null" >
-        amount,
-      </if>
-      <if test="submitTime != null" >
-        submit_time,
-      </if>
-      <if test="submitDate != null" >
-        submit_date,
-      </if>
-      <if test="pin != null" >
-        pin,
-      </if>
-      <if test="usedCoupon != null" >
-        used_coupon,
-      </if>
-      <if test="couponId != null" >
-        coupon_id,
-      </if>
-      <if test="couponType != null" >
-        coupon_type,
-      </if>
-      <if test="couponDes != null" >
-        coupon_des,
-      </if>
-      <if test="couponSendType != null" >
-        coupon_send_type,
-      </if>
-      <if test="couponSendTime != null" >
-        coupon_send_time,
-      </if>
-        <if test="shopId != null" >
-            shop_id,
-        </if>
-        <if test="token != null" >
-            token,
-        </if>
-        <if test="venderId != null" >
-            vender_id,
-        </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="creator != null" >
-        #{creator,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=BIGINT},
-      </if>
-      <if test="modifier != null" >
-        #{modifier,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyTime != null" >
-        #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyDate != null" >
-        #{modifyDate,jdbcType=BIGINT},
-      </if>
-      <if test="isDelete != null" >
-        #{isDelete,jdbcType=BIT},
-      </if>
-      <if test="activityId != null" >
-        #{activityId,jdbcType=BIGINT},
-      </if>
-      <if test="orderId != null" >
-        #{orderId,jdbcType=VARCHAR},
-      </if>
-      <if test="spuId != null" >
-        #{spuId,jdbcType=VARCHAR},
-      </if>
-      <if test="skuId != null" >
-        #{skuId,jdbcType=VARCHAR},
-      </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=DECIMAL},
-      </if>
-      <if test="submitTime != null" >
-        #{submitTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="submitDate != null" >
-        #{submitDate,jdbcType=BIGINT},
-      </if>
-      <if test="pin != null" >
-        #{pin,jdbcType=VARCHAR},
-      </if>
-      <if test="usedCoupon != null" >
-        #{usedCoupon,jdbcType=BIT},
-      </if>
-      <if test="couponId != null" >
-        #{couponId,jdbcType=VARCHAR},
-      </if>
-      <if test="couponType != null" >
-        #{couponType,jdbcType=TINYINT},
-      </if>
-      <if test="couponDes != null" >
-        #{couponDes,jdbcType=VARCHAR},
-      </if>
-      <if test="couponSendType != null" >
-        #{couponSendType,jdbcType=TINYINT},
-      </if>
-      <if test="couponSendTime != null" >
-        #{couponSendTime,jdbcType=TIMESTAMP},
-      </if>
-        <if test="shopId != null" >
-            #{shopId,jdbcType=BIGINT},
-        </if>
-        <if test="token != null" >
-            #{token,jdbcType=VARCHAR},
-        </if>
-        <if test="venderId != null" >
-            #{venderId,jdbcType=BIGINT},
-        </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="ShareActivityOrderStatistics" >
-    update share_activity_order_statistics
-    <set >
-      <if test="creator != null" >
-        creator = #{creator,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=BIGINT},
-      </if>
-      <if test="modifier != null" >
-        modifier = #{modifier,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyTime != null" >
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="modifyDate != null" >
-        modify_date = #{modifyDate,jdbcType=BIGINT},
-      </if>
-      <if test="isDelete != null" >
-        is_delete = #{isDelete,jdbcType=BIT},
-      </if>
-      <if test="activityId != null" >
-        activity_id = #{activityId,jdbcType=BIGINT},
-      </if>
-      <if test="orderId != null" >
-        order_id = #{orderId,jdbcType=VARCHAR},
-      </if>
-      <if test="spuId != null" >
-        spu_id = #{spuId,jdbcType=VARCHAR},
-      </if>
-      <if test="skuId != null" >
-        sku_id = #{skuId,jdbcType=VARCHAR},
-      </if>
-      <if test="amount != null" >
-        amount = #{amount,jdbcType=DECIMAL},
-      </if>
-      <if test="submitTime != null" >
-        submit_time = #{submitTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="submitDate != null" >
-        submit_date = #{submitDate,jdbcType=BIGINT},
-      </if>
-      <if test="pin != null" >
-        pin = #{pin,jdbcType=VARCHAR},
-      </if>
-      <if test="usedCoupon != null" >
-        used_coupon = #{usedCoupon,jdbcType=BIT},
-      </if>
-      <if test="couponId != null" >
-        coupon_id = #{couponId,jdbcType=VARCHAR},
-      </if>
-      <if test="couponType != null" >
-        coupon_type = #{couponType,jdbcType=TINYINT},
-      </if>
-      <if test="couponDes != null" >
-        coupon_des = #{couponDes,jdbcType=VARCHAR},
-      </if>
-      <if test="couponSendType != null" >
-        coupon_send_type = #{couponSendType,jdbcType=TINYINT},
-      </if>
-      <if test="couponSendTime != null" >
-        coupon_send_time = #{couponSendTime,jdbcType=TIMESTAMP},
-      </if>
-        <if test="shopId != null" >
-            shop_id = #{shopId,jdbcType=BIGINT},
-        </if>
-        <if test="token != null" >
-            token = #{token,jdbcType=VARCHAR},
-        </if>
-        <if test="venderId != null" >
-            vender_id = #{venderId,jdbcType=VARCHAR},
-        </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+    <insert id="insertSelective" parameterType="ShareActivityOrderStatistics">
+        insert into share_activity_order_statistics
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="modifyDate != null">
+                modify_date,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="spuId != null">
+                spu_id,
+            </if>
+            <if test="skuId != null">
+                sku_id,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="submitTime != null">
+                submit_time,
+            </if>
+            <if test="submitDate != null">
+                submit_date,
+            </if>
+            <if test="pin != null">
+                pin,
+            </if>
+            <if test="usedCoupon != null">
+                used_coupon,
+            </if>
+            <if test="couponId != null">
+                coupon_id,
+            </if>
+            <if test="couponType != null">
+                coupon_type,
+            </if>
+            <if test="couponDes != null">
+                coupon_des,
+            </if>
+            <if test="couponSendType != null">
+                coupon_send_type,
+            </if>
+            <if test="couponSendTime != null">
+                coupon_send_time,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+            <if test="venderId != null">
+                vender_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="orderStatus != null">
+                order_status,
+            </if>
+            <if test="bizId != null">
+                biz_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=BIGINT},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyDate != null">
+                #{modifyDate,jdbcType=BIGINT},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="spuId != null">
+                #{spuId,jdbcType=VARCHAR},
+            </if>
+            <if test="skuId != null">
+                #{skuId,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="submitTime != null">
+                #{submitTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="submitDate != null">
+                #{submitDate,jdbcType=BIGINT},
+            </if>
+            <if test="pin != null">
+                #{pin,jdbcType=VARCHAR},
+            </if>
+            <if test="usedCoupon != null">
+                #{usedCoupon,jdbcType=BIT},
+            </if>
+            <if test="couponId != null">
+                #{couponId,jdbcType=VARCHAR},
+            </if>
+            <if test="couponType != null">
+                #{couponType,jdbcType=TINYINT},
+            </if>
+            <if test="couponDes != null">
+                #{couponDes,jdbcType=VARCHAR},
+            </if>
+            <if test="couponSendType != null">
+                #{couponSendType,jdbcType=TINYINT},
+            </if>
+            <if test="couponSendTime != null">
+                #{couponSendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=BIGINT},
+            </if>
+            <if test="token != null">
+                #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="venderId != null">
+                #{venderId,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="orderStatus != null">
+                #{orderStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="bizId != null">
+                #{bizId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="ShareActivityOrderStatistics">
+        update share_activity_order_statistics
+        <set>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=BIGINT},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate,jdbcType=BIGINT},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="spuId != null">
+                spu_id = #{spuId,jdbcType=VARCHAR},
+            </if>
+            <if test="skuId != null">
+                sku_id = #{skuId,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="submitTime != null">
+                submit_time = #{submitTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="submitDate != null">
+                submit_date = #{submitDate,jdbcType=BIGINT},
+            </if>
+            <if test="pin != null">
+                pin = #{pin,jdbcType=VARCHAR},
+            </if>
+            <if test="usedCoupon != null">
+                used_coupon = #{usedCoupon,jdbcType=BIT},
+            </if>
+            <if test="couponId != null">
+                coupon_id = #{couponId,jdbcType=VARCHAR},
+            </if>
+            <if test="couponType != null">
+                coupon_type = #{couponType,jdbcType=TINYINT},
+            </if>
+            <if test="couponDes != null">
+                coupon_des = #{couponDes,jdbcType=VARCHAR},
+            </if>
+            <if test="couponSendType != null">
+                coupon_send_type = #{couponSendType,jdbcType=TINYINT},
+            </if>
+            <if test="couponSendTime != null">
+                coupon_send_time = #{couponSendTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=BIGINT},
+            </if>
+            <if test="token != null">
+                token = #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="venderId != null">
+                vender_id = #{venderId,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="orderStatus != null">
+                order_status = #{orderStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="bizId != null">
+                biz_id = #{bizId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 
-    <resultMap id="OrderResultMap" type="com.jd.m.cms.bjshare.domain.vo.OrderDataVo" >
-        <result column="activity_id" property="activityId" jdbcType="BIGINT" />
-        <result column="order_id" property="orderId" jdbcType="VARCHAR" />
-        <result column="amount" property="amount" jdbcType="DECIMAL" />
-        <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
-        <result column="submit_date" property="submitDate" jdbcType="BIGINT" />
-        <result column="pin" property="pin" jdbcType="VARCHAR" />
+    <resultMap id="OrderResultMap" type="com.jd.m.cms.bjshare.domain.vo.OrderDataVo">
+        <result column="activity_id" property="activityId" jdbcType="BIGINT"/>
+        <result column="order_id" property="orderId" jdbcType="VARCHAR"/>
+        <result column="amount" property="amount" jdbcType="DECIMAL"/>
+        <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP"/>
+        <result column="submit_date" property="submitDate" jdbcType="BIGINT"/>
+        <result column="pin" property="pin" jdbcType="VARCHAR"/>
+        <result column="statusName" property="statusName" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!-- 查询订单列表 -->
+    <!-- 查询订单列表  by lipengcheng 2018.8.21-->
     <select id="getOrderList" resultMap="OrderResultMap" parameterType="java.util.Map">
-        SELECT saos.submit_date,saos.submit_time,saos.order_id,saos.pin,saos.amount
-        from share_activity_order_statistics saos
-        where 1=1
-        and saos.is_delete = 0
-        <if test="venderId != null" >
-            and saos.vender_id = #{venderId,jdbcType=BIGINT}
+        SELECT
+        saos.submit_date,
+        saos.submit_time,
+        saos.order_id,
+        saos.pin,
+        case saos. STATUS when 0 then '待支付' when 1 then '已支付' when 2 then '已完成' end statusName,
+        saos.amount
+        FROM
+        share_activity_order_statistics saos
+        LEFT JOIN share_activity sa on sa.id=saos.activity_id
+        LEFT JOIN activity_bizs ab ON saos.activity_id = ab.activity_id
+        WHERE
+        1 = 1
+        AND saos.is_delete = 0
+        <if test="startDate != null and endDate != null">
+            and saos.submit_date BETWEEN #{startDate} AND #{endDate}
         </if>
-        <if test="startDate != null and endDate != null" >
-            and saos.submit_date BETWEEN #{startDate,jdbcType=BIGINT} AND #{endDate,jdbcType=BIGINT}
+        <if test="activityId != null">
+            and saos.activity_id = #{activityId}
         </if>
-        <if test="activityId != null" >
-            and saos.activity_id = #{activityId,jdbcType=BIGINT}
-        </if>
-        <if test="bizType != null and bizType == 2" >
-            and saos.spu_id = #{bizid,jdbcType=VARCHAR}
-        </if>
-        <if test="bizType != null and bizType == 3" >
-            and saos.shop_id = #{bizid,jdbcType=BIGINT}
-        </if>
-        <if test="orderId != null and orderId != ''" >
+        <if test="orderId != null">
             and saos.order_id = #{orderId,jdbcType=VARCHAR}
+        </if>
+        <if test="bizId != null">
+            and saos.biz_id = #{bizId,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            and saos.status = #{status,jdbcType=INTEGER}
+        </if>
+
+        <if test="bizType != null">
+            and sa.type = #{bizType,jdbcType=TINYINT}
+        </if>
+        <if test="activityStatus != null">
+            and sa.status = #{activityStatus,jdbcType=INTEGER}
+        </if>
+        <if test="firstCategory != null">
+            and ab.first_category = #{firstCategory,jdbcType=INTEGER}
+        </if>
+        <if test="secondCategory != null">
+            and ab.second_category = #{secondCategory,jdbcType=INTEGER}
+        </if>
+        <if test="thirdCategory != null">
+            and ab.third_category = #{thirdCategory,jdbcType=INTEGER}
         </if>
         order by saos.submit_date desc,saos.activity_id desc
     </select>
 
-    <resultMap id="CouponResultMap" type="com.jd.m.cms.bjshare.domain.vo.CouponDataVo" >
-        <result column="activity_id" property="activityId" jdbcType="BIGINT" />
-        <result column="order_id" property="orderId" jdbcType="VARCHAR" />
-        <result column="spu_id" property="spuId" jdbcType="VARCHAR" />
-        <result column="sku_id" property="skuId" jdbcType="VARCHAR" />
-        <result column="amount" property="amount" jdbcType="DECIMAL" />
-        <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
-        <result column="submit_date" property="submitDate" jdbcType="BIGINT" />
-        <result column="pin" property="pin" jdbcType="VARCHAR" />
-        <result column="used_coupon" property="usedCoupon" jdbcType="BIT" />
-        <result column="coupon_id" property="couponId" jdbcType="VARCHAR" />
-        <result column="coupon_type" property="couponType" jdbcType="TINYINT" />
-        <result column="coupon_des" property="couponDes" jdbcType="VARCHAR" />
-        <result column="coupon_send_type" property="couponSendType" jdbcType="TINYINT" />
-        <result column="coupon_send_time" property="couponSendTime" jdbcType="TIMESTAMP" />
+    <resultMap id="CouponResultMap" type="com.jd.m.cms.bjshare.domain.vo.CouponDataVo">
+        <result column="activity_id" property="activityId" jdbcType="BIGINT"/>
+        <result column="order_id" property="orderId" jdbcType="VARCHAR"/>
+        <result column="spu_id" property="spuId" jdbcType="VARCHAR"/>
+        <result column="sku_id" property="skuId" jdbcType="VARCHAR"/>
+        <result column="amount" property="amount" jdbcType="DECIMAL"/>
+        <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP"/>
+        <result column="submit_date" property="submitDate" jdbcType="BIGINT"/>
+        <result column="pin" property="pin" jdbcType="VARCHAR"/>
+        <result column="used_coupon" property="usedCoupon" jdbcType="BIT"/>
+        <result column="coupon_id" property="couponId" jdbcType="VARCHAR"/>
+        <result column="coupon_type" property="couponType" jdbcType="TINYINT"/>
+        <result column="coupon_des" property="couponDes" jdbcType="VARCHAR"/>
+        <result column="coupon_send_type" property="couponSendType" jdbcType="TINYINT"/>
+        <result column="coupon_send_time" property="couponSendTime" jdbcType="TIMESTAMP"/>
+        <result column="used_coupon_name" property="usedCouponName" jdbcType="VARCHAR"/>
+        <result column="coupon_type_name" property="couponTypeName" jdbcType="VARCHAR"/>
+        <result column="coupon_send_type_name" property="couponSendTypeName" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!-- 查询优惠券列表 -->
+    <!-- 查询优惠券列表  by lipengcheng 2018.8.22-->
     <select id="getCouponList" resultMap="CouponResultMap" parameterType="java.util.Map">
-        SELECT saos.activity_id, saos.order_id, saos.spu_id, saos.sku_id, saos.amount, saos.submit_time, saos.submit_date,
-        saos.pin, saos.used_coupon,saos.coupon_id, saos.coupon_type, saos.coupon_des, saos.coupon_send_type, saos.coupon_send_time
-        from share_activity_order_statistics saos
-        where 1=1
-        and saos.is_delete = 0
-        <if test="venderId != null" >
-            and saos.vender_id = #{venderId,jdbcType=BIGINT}
-        </if>
-        <if test="startDate != null and endDate != null" >
+        SELECT
+        saos.order_id,<!-- 订单id-->
+        saos.sku_id,<!--SKU id  -->
+        saos.amount,<!--下单金额 -->
+        saos.submit_time,<!-- 下单时间,用于导出-->
+        saos.submit_date,<!-- 下单时间-->
+        saos.pin,<!--发放pin -->
+        case  saos.used_coupon when 0 then  '未使用' when 1 then  '使用' end used_coupon_name ,<!--是否使用 -->
+        case  saos.coupon_type when 0 then  '拉新' when 1 then  '满减' end coupon_type_name,<!--券类型 -->
+        saos.coupon_id,<!-- 券编号-->
+        case  saos.coupon_send_type when 0 then  '批次' else  '未知' end coupon_send_type_name, <!--发放券 -->
+        saos.coupon_send_time<!--发放时间 -->
+        FROM
+        share_activity_order_statistics saos
+        WHERE
+        1 = 1
+        AND saos.is_delete = 0
+        <if test="startDate != null and endDate != null">
             and saos.coupon_send_time BETWEEN #{startDate,jdbcType=TIMESTAMP} AND #{endDate,jdbcType=TIMESTAMP}
         </if>
-        <if test="activityId != null" >
+        <if test="activityId != null">
             and saos.activity_id = #{activityId,jdbcType=BIGINT}
-        </if>
-        <if test="bizType != null and bizType == 2" >
-            and saos.spu_id = #{bizid,jdbcType=VARCHAR}
-        </if>
-        <if test="bizType != null and bizType == 3" >
-            and saos.shop_id = #{bizid,jdbcType=BIGINT}
         </if>
         order by saos.submit_date desc,saos.activity_id desc
     </select>

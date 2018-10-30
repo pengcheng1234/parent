@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="activity_id" property="activityId" jdbcType="INTEGER" />
     <result column="biz_type" property="bizType" jdbcType="TINYINT" />
-    <result column="biz_id" property="bizId" jdbcType="BIGINT" />
+    <result column="biz_id" property="bizId" jdbcType="VARCHAR" />
     <result column="validate_result" property="validateResult" jdbcType="TINYINT" />
     <result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
     <result column="reserve2" property="reserve2" jdbcType="VARCHAR" />
@@ -111,7 +111,7 @@
       reserve2, reserve3, create_time, 
       status)
     values (#{id,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, #{bizType,jdbcType=TINYINT}, 
-      #{bizId,jdbcType=BIGINT}, #{validateResult,jdbcType=TINYINT}, #{reserve1,jdbcType=VARCHAR}, 
+      #{bizId,jdbcType=VARCHAR}, #{validateResult,jdbcType=TINYINT}, #{reserve1,jdbcType=VARCHAR}, 
       #{reserve2,jdbcType=VARCHAR}, #{reserve3,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=TINYINT})
   </insert>
@@ -160,7 +160,7 @@
         #{bizType,jdbcType=TINYINT},
       </if>
       <if test="bizId != null" >
-        #{bizId,jdbcType=BIGINT},
+        #{bizId,jdbcType=VARCHAR},
       </if>
       <if test="validateResult != null" >
         #{validateResult,jdbcType=TINYINT},
@@ -201,7 +201,7 @@
         biz_type = #{record.bizType,jdbcType=TINYINT},
       </if>
       <if test="record.bizId != null" >
-        biz_id = #{record.bizId,jdbcType=BIGINT},
+        biz_id = #{record.bizId,jdbcType=VARCHAR},
       </if>
       <if test="record.validateResult != null" >
         validate_result = #{record.validateResult,jdbcType=TINYINT},
@@ -231,7 +231,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       activity_id = #{record.activityId,jdbcType=INTEGER},
       biz_type = #{record.bizType,jdbcType=TINYINT},
-      biz_id = #{record.bizId,jdbcType=BIGINT},
+      biz_id = #{record.bizId,jdbcType=VARCHAR},
       validate_result = #{record.validateResult,jdbcType=TINYINT},
       reserve1 = #{record.reserve1,jdbcType=VARCHAR},
       reserve2 = #{record.reserve2,jdbcType=VARCHAR},
@@ -252,7 +252,7 @@
         biz_type = #{bizType,jdbcType=TINYINT},
       </if>
       <if test="bizId != null" >
-        biz_id = #{bizId,jdbcType=BIGINT},
+        biz_id = #{bizId,jdbcType=VARCHAR},
       </if>
       <if test="validateResult != null" >
         validate_result = #{validateResult,jdbcType=TINYINT},
@@ -279,7 +279,7 @@
     update activity_bizs
     set activity_id = #{activityId,jdbcType=INTEGER},
       biz_type = #{bizType,jdbcType=TINYINT},
-      biz_id = #{bizId,jdbcType=BIGINT},
+      biz_id = #{bizId,jdbcType=VARCHAR},
       validate_result = #{validateResult,jdbcType=TINYINT},
       reserve1 = #{reserve1,jdbcType=VARCHAR},
       reserve2 = #{reserve2,jdbcType=VARCHAR},
@@ -296,8 +296,8 @@
     biz_id, validate_result,create_time)
     values
     <foreach collection="list" item="item" index="index" separator="," >
-    (#{item.activityId,jdbcType=INTEGER}, #{item.bizType,jdbcType=TINYINT},
-    #{item.bizId,jdbcType=BIGINT}, #{item.validateResult,jdbcType=TINYINT}, #{item.createTime,jdbcType=TIMESTAMP})
+      (#{item.activityId,jdbcType=INTEGER}, #{item.bizType,jdbcType=TINYINT},
+      #{item.bizId,jdbcType=BIGINT}, #{item.validateResult,jdbcType=TINYINT}, #{item.createTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
 

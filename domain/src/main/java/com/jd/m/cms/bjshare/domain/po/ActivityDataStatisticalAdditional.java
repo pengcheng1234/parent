@@ -1,8 +1,11 @@
 package com.jd.m.cms.bjshare.domain.po;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class ActivityDataStatisticalAdditional {
+
+    private static final long serialVersionUID = 6480879915251221821L;
     private Integer id;
 
     private Integer statisticalId;
@@ -26,6 +29,48 @@ public class ActivityDataStatisticalAdditional {
     private Date createTime;
 
     private Byte status;
+
+    private Long actualOrderAmount;
+
+    private Integer actualOrderNumber;
+
+    private Integer firstCategory;
+
+    private Integer secondCategory;
+
+    private Integer thirdCategory;
+
+    private Integer clickNumberUv;
+
+    private Long couponOrderAmount;
+
+    private Integer couponOrderNumber;
+
+    private Byte activityStatus;
+
+    private Integer activityType;
+
+    private String shopId;
+
+    private Integer DoneOrderNumber;
+
+    private Long DoneOrderAmount;
+
+    public Integer getDoneOrderNumber() {
+        return DoneOrderNumber;
+    }
+
+    public void setDoneOrderNumber(Integer doneOrderNumber) {
+        DoneOrderNumber = doneOrderNumber;
+    }
+
+    public Long getDoneOrderAmount() {
+        return DoneOrderAmount;
+    }
+
+    public void setDoneOrderAmount(Long doneOrderAmount) {
+        DoneOrderAmount = doneOrderAmount;
+    }
 
     public Integer getId() {
         return id;
@@ -121,5 +166,93 @@ public class ActivityDataStatisticalAdditional {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public Long getActualOrderAmount() {
+        return actualOrderAmount;
+    }
+
+    public void setActualOrderAmount(Long actualOrderAmount) {
+        this.actualOrderAmount = actualOrderAmount;
+    }
+
+    public Integer getActualOrderNumber() {
+        return actualOrderNumber;
+    }
+
+    public void setActualOrderNumber(Integer actualOrderNumber) {
+        this.actualOrderNumber = actualOrderNumber;
+    }
+
+    public Integer getFirstCategory() {
+        return firstCategory;
+    }
+
+    public void setFirstCategory(Integer firstCategory) {
+        this.firstCategory = firstCategory;
+    }
+
+    public Integer getSecondCategory() {
+        return secondCategory;
+    }
+
+    public void setSecondCategory(Integer secondCategory) {
+        this.secondCategory = secondCategory;
+    }
+
+    public Integer getThirdCategory() {
+        return thirdCategory;
+    }
+
+    public void setThirdCategory(Integer thirdCategory) {
+        this.thirdCategory = thirdCategory;
+    }
+
+    public Integer getClickNumberUv() {
+        return clickNumberUv;
+    }
+
+    public void setClickNumberUv(Integer clickNumberUv) {
+        this.clickNumberUv = clickNumberUv;
+    }
+
+    public Long getCouponOrderAmount() {
+        return couponOrderAmount;
+    }
+
+    public void setCouponOrderAmount(Long couponOrderAmount) {
+        this.couponOrderAmount = couponOrderAmount;
+    }
+
+    public Integer getCouponOrderNumber() {
+        return couponOrderNumber;
+    }
+
+    public void setCouponOrderNumber(Integer couponOrderNumber) {
+        this.couponOrderNumber = couponOrderNumber;
+    }
+
+    public Byte getActivityStatus() {
+        return activityStatus;
+    }
+
+    public void setActivityStatus(Byte activityStatus) {
+        this.activityStatus = activityStatus;
+    }
+
+    public Integer getActivityType() {
+        return activityType;
+    }
+
+    public void setActivityType(Integer activityType) {
+        this.activityType = activityType;
+    }
+
+    public String getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(String shopId) {
+        this.shopId = shopId == null ? null : shopId.trim();
     }
 }

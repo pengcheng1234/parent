@@ -41,7 +41,7 @@ public class ValidateServiceImpl {
                 for (int i = 0; i < count; i++) {
                     List<Long> li = (i == (count - 1)) ? validateList.subList(i * num, validateList.size()) : validateList.subList(i * num, (i + 1) * num);
                     Future<SkuValidateResult> future = executor1.submit(new ValidateSku(li, i, i));
-                    System.out.println("任务加入线程池\" + i + \":处理数量：" + li.size());
+                    System.out.println("任务加...入线程池\" + i + \":处理数量：" + li.size());
                     list.add(future);
                 }
 

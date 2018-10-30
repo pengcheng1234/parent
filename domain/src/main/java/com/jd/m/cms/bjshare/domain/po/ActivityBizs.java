@@ -9,7 +9,7 @@ public class ActivityBizs {
 
     private Byte bizType;
 
-    private Long bizId;
+    private String bizId;
 
     private Byte validateResult;
 
@@ -22,6 +22,12 @@ public class ActivityBizs {
     private Date createTime;
 
     private Byte status;
+
+    private Integer firstCategory;
+
+    private Integer secondCategory;
+
+    private Integer thirdCategory;
 
     public Integer getId() {
         return id;
@@ -47,12 +53,12 @@ public class ActivityBizs {
         this.bizType = bizType;
     }
 
-    public Long getBizId() {
+    public String getBizId() {
         return bizId;
     }
 
-    public void setBizId(Long bizId) {
-        this.bizId = bizId;
+    public void setBizId(String bizId) {
+        this.bizId = bizId == null ? null : bizId.trim();
     }
 
     public Byte getValidateResult() {
@@ -101,5 +107,29 @@ public class ActivityBizs {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public Integer getFirstCategory() {
+        return firstCategory;
+    }
+
+    public void setFirstCategory(Integer firstCategory) {
+        this.firstCategory = firstCategory;
+    }
+
+    public Integer getSecondCategory() {
+        return secondCategory;
+    }
+
+    public void setSecondCategory(Integer secondCategory) {
+        this.secondCategory = secondCategory;
+    }
+
+    public Integer getThirdCategory() {
+        return thirdCategory;
+    }
+
+    public void setThirdCategory(Integer thirdCategory) {
+        this.thirdCategory = thirdCategory;
     }
 }

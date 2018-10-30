@@ -391,17 +391,11 @@
   <!-- **************************************自营数据查询*************************** -->
   <!--活动详情-->
   <resultMap id="ActivityFullInfoMap" type="com.jd.m.cms.bjshare.domain.vo.ActivityFullInfoVo" extends="BaseResultMap">
-    <result property="produceClassify" column="produce_classify"/>
-    <result property="produceClassifyCn" column="produce_classify_cn"/>
     <result property="activityType" column="activity_type"/>
-    <result property="shopName" column="shop_name"/>
-    <result property="invalidSku" column="invalid_sku"/>
-    <result property="effectiveSku" column="effective_sku"/>
-    <result property="sku" column="sku"/>
   </resultMap>
   <!-- 查询活动详情-->
   <select id="queryActivityFullInfo" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
-        SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name,saa.invalid_sku,saa.effective_sku,saa.sku
+        SELECT sa.*,saa.type as activity_type
         from share_activity sa
         left JOIN share_activity_additional saa on sa.id = saa.activity_id
         where sa.is_delete = 0
@@ -413,7 +407,7 @@
 
   <!-- 查询活动列表 -->
   <select id="queryActivityFullInfoList" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
-    SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name
+    SELECT sa.*,saa.type as activity_type
     from share_activity sa
     left JOIN share_activity_additional saa on sa.id = saa.activity_id
     where sa.is_delete = 0
@@ -450,23 +444,86 @@
     order by sa.create_time desc
   </select>
 
+
+
   <!--sku是否已经参加了活动-->
-  <select id="skuIsInActivity" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
-    SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name
-    from share_activity sa
-    left JOIN share_activity_additional saa on sa.id = saa.activity_id
-    where sa.is_delete = 0 and sa.status !=2 and
-       find_in_set(#sku#,saa.sku)
+  <select id="bizIdIsInActivity" resultType="java.lang.Integer" parameterType="java.util.Map">
+    SELECT
+    count(*)
+    FROM
+    share_activity,
+    activity_bizs
+    WHERE
+    share_activity.id = activity_bizs.activity_id
+    AND share_activity.is_delete = 0
+    AND share_activity. STATUS != 2
+    AND activity_bizs.biz_id = #{bizId}
+    AND activity_bizs.biz_type = #{bizType}
+    AND #{endDate,jdbcType=BIGINT} >= share_activity.start_date
+    AND share_activity.end_date >= #{startDate,jdbcType=BIGINT}
+    AND activity_bizs.validate_result = 0
+  </select>
+  <!--批量查询bizId是否已参加活动（返回的是不符合要求的数据）  先查到所有的活动，并且活动不能通过 任壮-->
+  <select id="batchBizIdIsInActivity" resultType="java.lang.String" parameterType="java.util.Map">
+    SELECT
+    bizs.biz_id
+    FROM
+    share_activity sa
+    INNER JOIN activity_bizs bizs ON bizs.activity_id = sa.id
+    WHERE
+    bizs.validate_result = 0
+    AND bizs.biz_id IN
+    <foreach item="item" index="index" collection="bizIds"  open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    AND bizs.biz_type = #{bizType}
+    AND (
+    sa.is_delete = 0 and sa.status !=2
+    )
+    AND #{endDate,jdbcType=BIGINT} >= sa.start_date
+    AND sa.end_date >= #{startDate,jdbcType=BIGINT}
   </select>
 
-  <!--bizId是否已经参加了活动-->
-  <select id="bizIdIsInActivity" resultMap="ActivityFullInfoMap" parameterType="java.util.Map">
-    SELECT sa.*,saa.produce_classify,saa.produce_classify_cn,saa.type as activity_type,saa.shop_name
-    from share_activity sa
-    left JOIN share_activity_additional saa on sa.id = saa.activity_id
-    where sa.is_delete = 0 and sa.status !=2 and
-       find_in_set(#bizId#,sa.biz_ids)
+  <select id="exceldataData"  resultMap="BaseResultMap"  parameterType="java.util.Map">
+        select
+        t.id,
+        t.biz_ids
+        from
+        share_activity t
+        where
+        t.start_date >= #{startDate,jdbcType=BIGINT}
+        and t.end_date &lt;=  #{endDate,jdbcType=BIGINT}
+        and t.match_type = 2
   </select>
 
+
+  <!--武靖文导出数据专用 by lipengcheng 2018.09.13-->
+  <select id="excelDate"  resultType="com.jd.m.cms.bjshare.domain.vo.export.excelShareActivity"  parameterType="java.util.Map">
+          SELECT
+            id,
+            activity_name,
+            CASE type
+            WHEN 1 THEN '商详' WHEN 2 THEN '店铺' END as type,
+            shop_id,
+            vender_id,
+            creator,
+            CASE
+              status
+              WHEN 2 THEN (modify_time - start_time) /(60 * 60 * 24)
+              WHEN 1 THEN (now() - start_time) /(60 * 60 * 24)
+            END as status,
+            (
+              LENGTH(biz_ids) - LENGTH(REPLACE(biz_ids, ',', '')) + 1
+            ) as len
+          from
+            share_activity
+          WHERE
+            create_time BETWEEN   #{startDate,jdbcType=TIMESTAMP} and  #{endDate,jdbcType=TIMESTAMP}
+            and status != 0
+          HAVING
+            len > 0
+          ORDER by
+            create_time
+  </select>
 
 </mapper>

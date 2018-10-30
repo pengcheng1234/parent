@@ -16,6 +16,12 @@ public interface SelfItemCateJsfService {
    * @param
    * @return
    */
-    public List<CodeAndName> selectByParentCode(SelfItemCate selfItemCate);
+    public List<CodeAndName> selectByParentCode(SelfItemCate selfItemCate);  /**
+
+   * 把三级code转化为汉字 by  lipengcheng 2018.7.19
+   * @param
+   * @return
+   */
+  public String getCategory( String[] item);
 
 }

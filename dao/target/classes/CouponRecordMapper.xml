@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.m.cms.bjshare.dao.CouponRecordMapper">
+    <resultMap id="BaseResultMap" type="com.jd.m.cms.bjshare.domain.po.CouponRecord">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="batch_id" property="batchId" jdbcType="BIGINT"/>
+        <result column="cps_type_cd" property="cpsTypeCd" jdbcType="INTEGER"/>
+        <result column="cps_cate_cd" property="cpsCateCd" jdbcType="INTEGER"/>
+        <result column="use_tm" property="useTm" jdbcType="TIMESTAMP"/>
+        <result column="parent_sale_ord_id" property="parentSaleOrdId" jdbcType="VARCHAR"/>
+        <result column="user_log_acct" property="userLogAcct" jdbcType="VARCHAR"/>
+        <result column="arrive_acct_tm" property="arriveAcctTm" jdbcType="TIMESTAMP"/>
+        <result column="channel_name" property="channelName" jdbcType="VARCHAR"/>
+        <result column="activity_name" property="activityName" jdbcType="VARCHAR"/>
+        <result column="page_click_key" property="pageClickKey" jdbcType="VARCHAR"/>
+        <result column="cps_face_value" property="cpsFaceValue" jdbcType="DOUBLE"/>
+        <result column="consume_lim" property="consumeLim" jdbcType="DOUBLE"/>
+        <result column="sale_ord_id" property="saleOrdId" jdbcType="VARCHAR"/>
+        <result column="item_id" property="itemId" jdbcType="BIGINT"/>
+        <result column="item_first_cate_cd" property="itemFirstCateCd" jdbcType="INTEGER"/>
+        <result column="item_second_cate_cd" property="itemSecondCateCd" jdbcType="INTEGER"/>
+        <result column="item_third_cate_cd" property="itemThirdCateCd" jdbcType="INTEGER"/>
+        <result column="before_prefr_amount" property="beforePrefrAmount" jdbcType="DOUBLE"/>
+        <result column="after_prefr_amount" property="afterPrefrAmount" jdbcType="DOUBLE"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="statistical_time" property="statisticalTime" jdbcType="TIMESTAMP"/>
+        <result column="activity_id" property="activityId" jdbcType="INTEGER"/>
+        <result column="cps_id" property="cpsId" jdbcType="VARCHAR"/>
+        <result column="cps_valid_begin_tm" property="cpsValidBeginTm" jdbcType="TIMESTAMP"/>
+        <result column="cps_valid_end_tm" property="cpsValidEndTm" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, batch_id, cps_type_cd, cps_cate_cd, use_tm, parent_sale_ord_id, user_log_acct, 
+    arrive_acct_tm, channel_name, activity_name, page_click_key, cps_face_value, consume_lim, 
+    sale_ord_id, item_id, item_first_cate_cd, item_second_cate_cd, item_third_cate_cd, 
+    before_prefr_amount, after_prefr_amount, create_time, statistical_time, activity_id, 
+    cps_id, cps_valid_begin_tm, cps_valid_end_tm, status
+  </sql>
+
+    <!--查询优惠券列表数据——采销 by lipengcheng 2018.9.10-->
+    <select id="getCouponList" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT
+        t.item_id,
+        t.parent_sale_ord_id,
+        t.batch_id,
+        t.cps_id,
+        t.user_log_acct,
+        t.use_tm,
+        t.after_prefr_amount,
+        t.arrive_acct_tm
+        FROM
+        coupon_record t
+        where 1=1
+        and t.status=0
+        <if test="activityId != null">
+            and t.activity_id = #{activityId}
+        </if>
+        <if test="startDate != null and endDate != null">
+            and t.statistical_time BETWEEN #{startDate,jdbcType=TIMESTAMP} AND #{endDate,jdbcType=TIMESTAMP}
+        </if>
+        <if test="firstCategory != null ">
+            and t.item_first_cate_cd = #{firstCategory}
+        </if>
+        <if test="secondCategory != null ">
+            and t.item_second_cate_cd = #{secondCategory}
+        </if>
+        <if test="bizType != null">
+            and t.activity_type = #{bizType}
+        </if>
+        <if test="status != null">
+            and t.activity_status = #{status}
+        </if>
+        <if test="thirdCategory != null ">
+            and t.item_third_cate_cd = #{thirdCategory}
+        </if>
+        <if test="creatorList != null">
+            AND t.activity_creator IN
+            <foreach collection="creatorList" index="index" item="creator" open="(" separator="," close=")">
+                #{creator}
+            </foreach>
+        </if>
+
+        order by t.arrive_acct_tm desc
+    </select>
+
+
+
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.jd.m.cms.bjshare.domain.po.CouponRecordExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from coupon_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from coupon_record
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from coupon_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.jd.m.cms.bjshare.domain.po.CouponRecordExample">
+        delete from coupon_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.jd.m.cms.bjshare.domain.po.CouponRecord">
+    insert into coupon_record (id, batch_id, cps_type_cd, 
+      cps_cate_cd, use_tm, parent_sale_ord_id, 
+      user_log_acct, arrive_acct_tm, channel_name, 
+      activity_name, page_click_key, cps_face_value, 
+      consume_lim, sale_ord_id, item_id, 
+      item_first_cate_cd, item_second_cate_cd, item_third_cate_cd, 
+      before_prefr_amount, after_prefr_amount, create_time, 
+      statistical_time, activity_id, cps_id, 
+      cps_valid_begin_tm, cps_valid_end_tm, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{batchId,jdbcType=BIGINT}, #{cpsTypeCd,jdbcType=INTEGER}, 
+      #{cpsCateCd,jdbcType=INTEGER}, #{useTm,jdbcType=TIMESTAMP}, #{parentSaleOrdId,jdbcType=VARCHAR}, 
+      #{userLogAcct,jdbcType=VARCHAR}, #{arriveAcctTm,jdbcType=TIMESTAMP}, #{channelName,jdbcType=VARCHAR}, 
+      #{activityName,jdbcType=VARCHAR}, #{pageClickKey,jdbcType=VARCHAR}, #{cpsFaceValue,jdbcType=DOUBLE}, 
+      #{consumeLim,jdbcType=DOUBLE}, #{saleOrdId,jdbcType=VARCHAR}, #{itemId,jdbcType=BIGINT}, 
+      #{itemFirstCateCd,jdbcType=INTEGER}, #{itemSecondCateCd,jdbcType=INTEGER}, #{itemThirdCateCd,jdbcType=INTEGER}, 
+      #{beforePrefrAmount,jdbcType=DOUBLE}, #{afterPrefrAmount,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{statisticalTime,jdbcType=TIMESTAMP}, #{activityId,jdbcType=INTEGER}, #{cpsId,jdbcType=VARCHAR}, 
+      #{cpsValidBeginTm,jdbcType=TIMESTAMP}, #{cpsValidEndTm,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.jd.m.cms.bjshare.domain.po.CouponRecord">
+        insert into coupon_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="batchId != null">
+                batch_id,
+            </if>
+            <if test="cpsTypeCd != null">
+                cps_type_cd,
+            </if>
+            <if test="cpsCateCd != null">
+                cps_cate_cd,
+            </if>
+            <if test="useTm != null">
+                use_tm,
+            </if>
+            <if test="parentSaleOrdId != null">
+                parent_sale_ord_id,
+            </if>
+            <if test="userLogAcct != null">
+                user_log_acct,
+            </if>
+            <if test="arriveAcctTm != null">
+                arrive_acct_tm,
+            </if>
+            <if test="channelName != null">
+                channel_name,
+            </if>
+            <if test="activityName != null">
+                activity_name,
+            </if>
+            <if test="pageClickKey != null">
+                page_click_key,
+            </if>
+            <if test="cpsFaceValue != null">
+                cps_face_value,
+            </if>
+            <if test="consumeLim != null">
+                consume_lim,
+            </if>
+            <if test="saleOrdId != null">
+                sale_ord_id,
+            </if>
+            <if test="itemId != null">
+                item_id,
+            </if>
+            <if test="itemFirstCateCd != null">
+                item_first_cate_cd,
+            </if>
+            <if test="itemSecondCateCd != null">
+                item_second_cate_cd,
+            </if>
+            <if test="itemThirdCateCd != null">
+                item_third_cate_cd,
+            </if>
+            <if test="beforePrefrAmount != null">
+                before_prefr_amount,
+            </if>
+            <if test="afterPrefrAmount != null">
+                after_prefr_amount,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="statisticalTime != null">
+                statistical_time,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="cpsId != null">
+                cps_id,
+            </if>
+            <if test="cpsValidBeginTm != null">
+                cps_valid_begin_tm,
+            </if>
+            <if test="cpsValidEndTm != null">
+                cps_valid_end_tm,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="batchId != null">
+                #{batchId,jdbcType=BIGINT},
+            </if>
+            <if test="cpsTypeCd != null">
+                #{cpsTypeCd,jdbcType=INTEGER},
+            </if>
+            <if test="cpsCateCd != null">
+                #{cpsCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="useTm != null">
+                #{useTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="parentSaleOrdId != null">
+                #{parentSaleOrdId,jdbcType=VARCHAR},
+            </if>
+            <if test="userLogAcct != null">
+                #{userLogAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="arriveAcctTm != null">
+                #{arriveAcctTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="channelName != null">
+                #{channelName,jdbcType=VARCHAR},
+            </if>
+            <if test="activityName != null">
+                #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="pageClickKey != null">
+                #{pageClickKey,jdbcType=VARCHAR},
+            </if>
+            <if test="cpsFaceValue != null">
+                #{cpsFaceValue,jdbcType=DOUBLE},
+            </if>
+            <if test="consumeLim != null">
+                #{consumeLim,jdbcType=DOUBLE},
+            </if>
+            <if test="saleOrdId != null">
+                #{saleOrdId,jdbcType=VARCHAR},
+            </if>
+            <if test="itemId != null">
+                #{itemId,jdbcType=BIGINT},
+            </if>
+            <if test="itemFirstCateCd != null">
+                #{itemFirstCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemSecondCateCd != null">
+                #{itemSecondCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemThirdCateCd != null">
+                #{itemThirdCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="beforePrefrAmount != null">
+                #{beforePrefrAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="afterPrefrAmount != null">
+                #{afterPrefrAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="statisticalTime != null">
+                #{statisticalTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="cpsId != null">
+                #{cpsId,jdbcType=VARCHAR},
+            </if>
+            <if test="cpsValidBeginTm != null">
+                #{cpsValidBeginTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cpsValidEndTm != null">
+                #{cpsValidEndTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.jd.m.cms.bjshare.domain.po.CouponRecordExample"
+            resultType="java.lang.Integer">
+        select count(*) from coupon_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update coupon_record
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.batchId != null">
+                batch_id = #{record.batchId,jdbcType=BIGINT},
+            </if>
+            <if test="record.cpsTypeCd != null">
+                cps_type_cd = #{record.cpsTypeCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.cpsCateCd != null">
+                cps_cate_cd = #{record.cpsCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.useTm != null">
+                use_tm = #{record.useTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.parentSaleOrdId != null">
+                parent_sale_ord_id = #{record.parentSaleOrdId,jdbcType=VARCHAR},
+            </if>
+            <if test="record.userLogAcct != null">
+                user_log_acct = #{record.userLogAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="record.arriveAcctTm != null">
+                arrive_acct_tm = #{record.arriveAcctTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.channelName != null">
+                channel_name = #{record.channelName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.activityName != null">
+                activity_name = #{record.activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.pageClickKey != null">
+                page_click_key = #{record.pageClickKey,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cpsFaceValue != null">
+                cps_face_value = #{record.cpsFaceValue,jdbcType=DOUBLE},
+            </if>
+            <if test="record.consumeLim != null">
+                consume_lim = #{record.consumeLim,jdbcType=DOUBLE},
+            </if>
+            <if test="record.saleOrdId != null">
+                sale_ord_id = #{record.saleOrdId,jdbcType=VARCHAR},
+            </if>
+            <if test="record.itemId != null">
+                item_id = #{record.itemId,jdbcType=BIGINT},
+            </if>
+            <if test="record.itemFirstCateCd != null">
+                item_first_cate_cd = #{record.itemFirstCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.itemSecondCateCd != null">
+                item_second_cate_cd = #{record.itemSecondCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.itemThirdCateCd != null">
+                item_third_cate_cd = #{record.itemThirdCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="record.beforePrefrAmount != null">
+                before_prefr_amount = #{record.beforePrefrAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="record.afterPrefrAmount != null">
+                after_prefr_amount = #{record.afterPrefrAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.statisticalTime != null">
+                statistical_time = #{record.statisticalTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.activityId != null">
+                activity_id = #{record.activityId,jdbcType=INTEGER},
+            </if>
+            <if test="record.cpsId != null">
+                cps_id = #{record.cpsId,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cpsValidBeginTm != null">
+                cps_valid_begin_tm = #{record.cpsValidBeginTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.cpsValidEndTm != null">
+                cps_valid_end_tm = #{record.cpsValidEndTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=TINYINT},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update coupon_record
+        set id = #{record.id,jdbcType=INTEGER},
+        batch_id = #{record.batchId,jdbcType=BIGINT},
+        cps_type_cd = #{record.cpsTypeCd,jdbcType=INTEGER},
+        cps_cate_cd = #{record.cpsCateCd,jdbcType=INTEGER},
+        use_tm = #{record.useTm,jdbcType=TIMESTAMP},
+        parent_sale_ord_id = #{record.parentSaleOrdId,jdbcType=VARCHAR},
+        user_log_acct = #{record.userLogAcct,jdbcType=VARCHAR},
+        arrive_acct_tm = #{record.arriveAcctTm,jdbcType=TIMESTAMP},
+        channel_name = #{record.channelName,jdbcType=VARCHAR},
+        activity_name = #{record.activityName,jdbcType=VARCHAR},
+        page_click_key = #{record.pageClickKey,jdbcType=VARCHAR},
+        cps_face_value = #{record.cpsFaceValue,jdbcType=DOUBLE},
+        consume_lim = #{record.consumeLim,jdbcType=DOUBLE},
+        sale_ord_id = #{record.saleOrdId,jdbcType=VARCHAR},
+        item_id = #{record.itemId,jdbcType=BIGINT},
+        item_first_cate_cd = #{record.itemFirstCateCd,jdbcType=INTEGER},
+        item_second_cate_cd = #{record.itemSecondCateCd,jdbcType=INTEGER},
+        item_third_cate_cd = #{record.itemThirdCateCd,jdbcType=INTEGER},
+        before_prefr_amount = #{record.beforePrefrAmount,jdbcType=DOUBLE},
+        after_prefr_amount = #{record.afterPrefrAmount,jdbcType=DOUBLE},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        statistical_time = #{record.statisticalTime,jdbcType=TIMESTAMP},
+        activity_id = #{record.activityId,jdbcType=INTEGER},
+        cps_id = #{record.cpsId,jdbcType=VARCHAR},
+        cps_valid_begin_tm = #{record.cpsValidBeginTm,jdbcType=TIMESTAMP},
+        cps_valid_end_tm = #{record.cpsValidEndTm,jdbcType=TIMESTAMP},
+        status = #{record.status,jdbcType=TINYINT}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jd.m.cms.bjshare.domain.po.CouponRecord">
+        update coupon_record
+        <set>
+            <if test="batchId != null">
+                batch_id = #{batchId,jdbcType=BIGINT},
+            </if>
+            <if test="cpsTypeCd != null">
+                cps_type_cd = #{cpsTypeCd,jdbcType=INTEGER},
+            </if>
+            <if test="cpsCateCd != null">
+                cps_cate_cd = #{cpsCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="useTm != null">
+                use_tm = #{useTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="parentSaleOrdId != null">
+                parent_sale_ord_id = #{parentSaleOrdId,jdbcType=VARCHAR},
+            </if>
+            <if test="userLogAcct != null">
+                user_log_acct = #{userLogAcct,jdbcType=VARCHAR},
+            </if>
+            <if test="arriveAcctTm != null">
+                arrive_acct_tm = #{arriveAcctTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="channelName != null">
+                channel_name = #{channelName,jdbcType=VARCHAR},
+            </if>
+            <if test="activityName != null">
+                activity_name = #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="pageClickKey != null">
+                page_click_key = #{pageClickKey,jdbcType=VARCHAR},
+            </if>
+            <if test="cpsFaceValue != null">
+                cps_face_value = #{cpsFaceValue,jdbcType=DOUBLE},
+            </if>
+            <if test="consumeLim != null">
+                consume_lim = #{consumeLim,jdbcType=DOUBLE},
+            </if>
+            <if test="saleOrdId != null">
+                sale_ord_id = #{saleOrdId,jdbcType=VARCHAR},
+            </if>
+            <if test="itemId != null">
+                item_id = #{itemId,jdbcType=BIGINT},
+            </if>
+            <if test="itemFirstCateCd != null">
+                item_first_cate_cd = #{itemFirstCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemSecondCateCd != null">
+                item_second_cate_cd = #{itemSecondCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="itemThirdCateCd != null">
+                item_third_cate_cd = #{itemThirdCateCd,jdbcType=INTEGER},
+            </if>
+            <if test="beforePrefrAmount != null">
+                before_prefr_amount = #{beforePrefrAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="afterPrefrAmount != null">
+                after_prefr_amount = #{afterPrefrAmount,jdbcType=DOUBLE},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="statisticalTime != null">
+                statistical_time = #{statisticalTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="cpsId != null">
+                cps_id = #{cpsId,jdbcType=VARCHAR},
+            </if>
+            <if test="cpsValidBeginTm != null">
+                cps_valid_begin_tm = #{cpsValidBeginTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cpsValidEndTm != null">
+                cps_valid_end_tm = #{cpsValidEndTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jd.m.cms.bjshare.domain.po.CouponRecord">
+    update coupon_record
+    set batch_id = #{batchId,jdbcType=BIGINT},
+      cps_type_cd = #{cpsTypeCd,jdbcType=INTEGER},
+      cps_cate_cd = #{cpsCateCd,jdbcType=INTEGER},
+      use_tm = #{useTm,jdbcType=TIMESTAMP},
+      parent_sale_ord_id = #{parentSaleOrdId,jdbcType=VARCHAR},
+      user_log_acct = #{userLogAcct,jdbcType=VARCHAR},
+      arrive_acct_tm = #{arriveAcctTm,jdbcType=TIMESTAMP},
+      channel_name = #{channelName,jdbcType=VARCHAR},
+      activity_name = #{activityName,jdbcType=VARCHAR},
+      page_click_key = #{pageClickKey,jdbcType=VARCHAR},
+      cps_face_value = #{cpsFaceValue,jdbcType=DOUBLE},
+      consume_lim = #{consumeLim,jdbcType=DOUBLE},
+      sale_ord_id = #{saleOrdId,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=BIGINT},
+      item_first_cate_cd = #{itemFirstCateCd,jdbcType=INTEGER},
+      item_second_cate_cd = #{itemSecondCateCd,jdbcType=INTEGER},
+      item_third_cate_cd = #{itemThirdCateCd,jdbcType=INTEGER},
+      before_prefr_amount = #{beforePrefrAmount,jdbcType=DOUBLE},
+      after_prefr_amount = #{afterPrefrAmount,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      statistical_time = #{statisticalTime,jdbcType=TIMESTAMP},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      cps_id = #{cpsId,jdbcType=VARCHAR},
+      cps_valid_begin_tm = #{cpsValidBeginTm,jdbcType=TIMESTAMP},
+      cps_valid_end_tm = #{cpsValidEndTm,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

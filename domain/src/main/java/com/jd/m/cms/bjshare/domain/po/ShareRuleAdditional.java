@@ -13,11 +13,11 @@ public class ShareRuleAdditional {
 
     private String businessCode;
 
-    private Integer topBusinessId;
+    private String topBusinessId;
 
-    private Integer secondBusinessId;
+    private String secondBusinessId;
 
-    private Integer orgId;
+    private String orgId;
 
     private String reserve1;
 
@@ -69,28 +69,28 @@ public class ShareRuleAdditional {
         this.businessCode = businessCode == null ? null : businessCode.trim();
     }
 
-    public Integer getTopBusinessId() {
+    public String getTopBusinessId() {
         return topBusinessId;
     }
 
-    public void setTopBusinessId(Integer topBusinessId) {
-        this.topBusinessId = topBusinessId;
+    public void setTopBusinessId(String topBusinessId) {
+        this.topBusinessId = topBusinessId == null ? null : topBusinessId.trim();
     }
 
-    public Integer getSecondBusinessId() {
+    public String getSecondBusinessId() {
         return secondBusinessId;
     }
 
-    public void setSecondBusinessId(Integer secondBusinessId) {
-        this.secondBusinessId = secondBusinessId;
+    public void setSecondBusinessId(String secondBusinessId) {
+        this.secondBusinessId = secondBusinessId == null ? null : secondBusinessId.trim();
     }
 
-    public Integer getOrgId() {
+    public String getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(Integer orgId) {
-        this.orgId = orgId;
+    public void setOrgId(String orgId) {
+        this.orgId = orgId == null ? null : orgId.trim();
     }
 
     public String getReserve1() {

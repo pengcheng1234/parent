@@ -40,6 +40,38 @@ public class CouponDataVo implements Serializable {
 
 	private Date couponSendTime;
 
+	private String usedCouponName;//是否使用
+
+
+	private String couponTypeName;//券类型
+
+
+	private String couponSendTypeName;//发放券
+
+	public String getUsedCouponName() {
+		return usedCouponName;
+	}
+
+	public void setUsedCouponName(String usedCouponName) {
+		this.usedCouponName = usedCouponName;
+	}
+
+	public String getCouponTypeName() {
+		return couponTypeName;
+	}
+
+	public void setCouponTypeName(String couponTypeName) {
+		this.couponTypeName = couponTypeName;
+	}
+
+	public String getCouponSendTypeName() {
+		return couponSendTypeName;
+	}
+
+	public void setCouponSendTypeName(String couponSendTypeName) {
+		this.couponSendTypeName = couponSendTypeName;
+	}
+
 	public Long getActivityId() {
 		return activityId;
 	}

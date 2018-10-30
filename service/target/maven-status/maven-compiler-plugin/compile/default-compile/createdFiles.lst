@@ -1,3 +1,5 @@
 com\jd\m\bjshare\activity\client\service\impl\CheckFlowJsfServiceImpl.class
+com\jd\m\bjshare\databoard\service\impl\DataStatisticalJsfServiceImpl.class
 com\jd\m\bjshare\activity\client\service\impl\SelfItemCateServiceJsfImpl.class
 com\jd\m\bjshare\activity\client\service\impl\ActivityServiceImpl.class
+com\jd\m\commodity\produce\service\impl\ProduceServiceImpl.class

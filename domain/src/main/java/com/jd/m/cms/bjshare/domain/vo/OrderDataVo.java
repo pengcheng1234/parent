@@ -24,6 +24,16 @@ public class OrderDataVo implements Serializable {
 
 	private BigDecimal amount;
 
+	private  String  statusName;
+
+	public String getStatusName() {
+		return statusName;
+	}
+
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
+	}
+
 	public Long getActivityId() {
 		return activityId;
 	}

@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 /**
  * @Author: zhaoxiaoguang
- * @Description:  大批量导出报表的方法
+ * @Description: 大批量导出报表的方法
  * @Date: created in 2018/5/14
  * @Modidied By:
  **/
@@ -28,6 +28,7 @@ public class BatchExportToExcelUtil {
 
     private static final Pattern p = Pattern.compile("^//d+(//.//d+)?$");
 
+
     /**
      * 导出Excel的方法
      *
@@ -36,11 +37,11 @@ public class BatchExportToExcelUtil {
      * @param result   结果集
      * @throws Exception
      */
-    public static <T> Workbook exportExcel(Workbook workbook, String[] columns, List<T> result, Map<String, BigDecimal>columnssum) throws Exception {
+    public static <T> Workbook exportExcel(Workbook workbook, String[] columns, List<T> result, Map<String, BigDecimal> columnssum) throws Exception {
 
         Long startTime = System.currentTimeMillis();
         if (logInfoEnabled) {
-            log.info("报表条数：" + (result != null ? result.size()  : 0));
+            log.info("报表条数：" + (result != null ? result.size() : 0));
         }
         if (workbook == null) {
             return null;
@@ -79,8 +80,8 @@ public class BatchExportToExcelUtil {
                     } else if (value instanceof Date) {
                         Date date = (Date) value;
                         textValue = DateUtil.formatDateToString(date, DateUtil.YYMMDDHHMMSS);
-                        if(textValue.contains("00:00")){
-                            textValue=textValue.substring(0,10);
+                        if (textValue.contains("00:00")) {
+                            textValue = textValue.substring(0, 10);
                         }
                     } else if (value instanceof byte[]) {
 
@@ -123,10 +124,120 @@ public class BatchExportToExcelUtil {
         }
         Long endTime = System.currentTimeMillis();
         if (logInfoEnabled) {
-            log.info("导出时间消耗时间：" + (endTime-startTime)/1000);
+            log.info("导出时间消耗时间：" + (endTime - startTime) / 1000);
         }
         return workbook;
 
+    }
+
+    /**
+     * 导出Excel的方法
+     *
+     * @param workbook excel中的sheet名称
+     * @param columns  每列显示的字段
+     * @param result   结果集
+     * @throws Exception
+     */
+    public static <T> Workbook exportMoreExcel(Workbook workbook, String[] columns, List<T> result, Map<String, BigDecimal> columnssum) throws Exception {
+        Long startTime = System.currentTimeMillis();
+        if (logInfoEnabled) {
+            log.info("报表条数：" + (result != null ? result.size() : 0));
+        }
+        if (workbook == null) {
+            return null;
+        }
+        if (columns == null) {
+            return workbook;
+        }
+        int page = 1;//需要几个sheet页
+        if (result != null && result.size() > 0) {
+            page = (result.size() - 1) / 5000 + 1;
+        }
+        int index=1;
+        for (int j = 1; j <= page; j++) {
+            Sheet sheet = workbook.getSheetAt(j - 1);
+            // 遍历集合数据，产生数据行
+            if (result != null && result.size() > 0) {
+                int endNum = 5000 * j;
+                if (j == page) {//最后sheet显示的数量
+                    endNum = result.size();
+                }
+                for (int x = 5000 * (j - 1); x < endNum; x++) {
+                    int rowNum = sheet.getLastRowNum() + 1;
+                    Row row = sheet.createRow(rowNum);
+                    rowNum++;
+
+                    //序号
+                    Cell cellNum = row.createCell(0);
+                    CellStyle style = cellContent(workbook);
+                    cellNum.setCellStyle(style);
+                    cellNum.setCellValue(index);
+                    index++;
+                    for (short i = 1; i < columns.length; i++) {
+                        Cell cell = row.createCell(i);
+
+                        //文件样式
+                        cell.setCellStyle(style);
+                        String fieldName = columns[i];
+                        String getMethodName = "get"
+                                + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                        Class tCls = result.get(x).getClass();
+                        Method getMethod = tCls.getMethod(getMethodName, new Class[]{});
+                        Object value = getMethod.invoke(result.get(x), new Class[]{});
+                        String textValue = null;
+                        if (value == null) {
+                            textValue = "";
+                        } else if (value instanceof Date) {
+                            Date date = (Date) value;
+                            textValue = DateUtil.formatDateToString(date, DateUtil.YYMMDDHHMMSS);
+                            if (textValue.contains("00:00")) {
+                                textValue = textValue.substring(0, 10);
+                            }
+                        } else if (value instanceof byte[]) {
+
+                            // 图片处理
+                        } else {
+
+                            //其它数据类型都当作字符串简单处理
+                            textValue = value.toString();
+                        }
+                        if (textValue != null) {
+                            Matcher matcher = p.matcher(textValue);
+                            if (matcher.matches()) {
+                                //是数字当作double处理
+                                cell.setCellValue(Double.parseDouble(textValue));
+                            } else {
+                                cell.setCellValue(textValue);
+                            }
+                            if (columnssum != null && columnssum.containsKey(columns[i])) {//判断是否是求和字段
+                                columnssum.put(columns[i], columnssum.get(columns[i]).add(new BigDecimal(textValue)));
+                            }
+                        }
+                    }
+                }
+                if (columnssum != null) {
+                    //添加最后一行统计值
+                    int sumNum = sheet.getLastRowNum() + 1;
+                    Row row = sheet.createRow(sumNum);
+                    Cell cellNum = row.createCell(0);//第一列
+                    CellStyle style = cellContent(workbook);
+                    cellNum.setCellStyle(style);
+                    cellNum.setCellValue("总计：");
+                    for (short i = 1; i < columns.length; i++) {
+                        Cell cellCol = row.createCell(i);
+                        cellCol.setCellStyle(style);
+                        if (columnssum.containsKey(columns[i])) {//判断是否是求和字段
+                            cellCol.setCellValue(columnssum.get(columns[i]).toString());
+                        }
+                    }
+                }
+            }
+        }
+        Long endTime = System.currentTimeMillis();
+        if (logInfoEnabled) {
+            log.info("导出时间消耗时间：" + (endTime - startTime) / 1000);
+        }
+        return workbook;
     }
 
     /**
@@ -157,6 +268,46 @@ public class BatchExportToExcelUtil {
             cell.setCellStyle(style);
             RichTextString text = new XSSFRichTextString(headers[i]);
             cell.setCellValue(text);
+        }
+        return workbook;
+    }
+
+    /**
+     * 创建多个工作簿
+     *
+     * @param title   报表头文件
+     * @param headers 报表列信息
+     * @param size    列的总数
+     * @return
+     */
+    public static Workbook createMoreWorkBook(String title, String[] headers, int size) {
+
+        // 声明一个工作薄
+        Workbook workbook = new SXSSFWorkbook(1000);
+        int page = (size - 1) / 5000 + 1;
+        for (int i = 0; i < page; i++) {
+            Sheet sheet;
+            if (i == 0) {
+                // 生成第一个sheet
+                sheet = workbook.createSheet(title+"第"+i+1+"页");
+            } else { // 生成其他sheet
+                sheet = workbook.createSheet("第"+(i+1)+"页");
+            }
+            // 设置表格默认列宽度为20个字节
+            sheet.setDefaultColumnWidth(18);
+            sheet.setDefaultRowHeightInPoints(15);
+
+            //头文件样式
+            CellStyle style = cellHead(workbook);
+
+            // 产生表格标题行
+            Row row = sheet.createRow(0);
+            for (int j = 0; j < headers.length; j++) {
+                Cell cell = row.createCell(j);
+                cell.setCellStyle(style);
+                RichTextString text = new XSSFRichTextString(headers[j]);
+                cell.setCellValue(text);
+            }
         }
         return workbook;
     }

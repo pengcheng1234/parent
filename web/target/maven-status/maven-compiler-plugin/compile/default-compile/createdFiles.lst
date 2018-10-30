@@ -1,6 +1,6 @@
 com\jd\m\cms\bjshare\web\controller\CheckFlowController.class
+com\jd\m\cms\bjshare\web\controller\SelfProduceController.class
 com\jd\m\cms\bjshare\web\controller\ActivityController.class
 com\jd\m\cms\bjshare\web\util\UserInfo.class
 com\jd\m\cms\bjshare\web\quartz\quartzTest.class
 com\jd\m\cms\bjshare\web\controller\ExportController.class
-com\jd\m\cms\bjshare\web\controller\SelfProduceController.class

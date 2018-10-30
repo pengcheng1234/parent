@@ -225,146 +225,6 @@ public class ShareActivityAdditionalExample {
             return (Criteria) this;
         }
 
-        public Criteria andProduceClassifyIsNull() {
-            addCriterion("produce_classify is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyIsNotNull() {
-            addCriterion("produce_classify is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyEqualTo(String value) {
-            addCriterion("produce_classify =", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyNotEqualTo(String value) {
-            addCriterion("produce_classify <>", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyGreaterThan(String value) {
-            addCriterion("produce_classify >", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyGreaterThanOrEqualTo(String value) {
-            addCriterion("produce_classify >=", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyLessThan(String value) {
-            addCriterion("produce_classify <", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyLessThanOrEqualTo(String value) {
-            addCriterion("produce_classify <=", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyLike(String value) {
-            addCriterion("produce_classify like", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyNotLike(String value) {
-            addCriterion("produce_classify not like", value, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyIn(List<String> values) {
-            addCriterion("produce_classify in", values, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyNotIn(List<String> values) {
-            addCriterion("produce_classify not in", values, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyBetween(String value1, String value2) {
-            addCriterion("produce_classify between", value1, value2, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyNotBetween(String value1, String value2) {
-            addCriterion("produce_classify not between", value1, value2, "produceClassify");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnIsNull() {
-            addCriterion("produce_classify_cn is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnIsNotNull() {
-            addCriterion("produce_classify_cn is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnEqualTo(String value) {
-            addCriterion("produce_classify_cn =", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnNotEqualTo(String value) {
-            addCriterion("produce_classify_cn <>", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnGreaterThan(String value) {
-            addCriterion("produce_classify_cn >", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnGreaterThanOrEqualTo(String value) {
-            addCriterion("produce_classify_cn >=", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnLessThan(String value) {
-            addCriterion("produce_classify_cn <", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnLessThanOrEqualTo(String value) {
-            addCriterion("produce_classify_cn <=", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnLike(String value) {
-            addCriterion("produce_classify_cn like", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnNotLike(String value) {
-            addCriterion("produce_classify_cn not like", value, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnIn(List<String> values) {
-            addCriterion("produce_classify_cn in", values, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnNotIn(List<String> values) {
-            addCriterion("produce_classify_cn not in", values, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnBetween(String value1, String value2) {
-            addCriterion("produce_classify_cn between", value1, value2, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
-        public Criteria andProduceClassifyCnNotBetween(String value1, String value2) {
-            addCriterion("produce_classify_cn not between", value1, value2, "produceClassifyCn");
-            return (Criteria) this;
-        }
-
         public Criteria andTypeIsNull() {
             addCriterion("type is null");
             return (Criteria) this;
@@ -425,73 +285,63 @@ public class ShareActivityAdditionalExample {
             return (Criteria) this;
         }
 
-        public Criteria andShopNameIsNull() {
-            addCriterion("shop_name is null");
+        public Criteria andUploadOverIsNull() {
+            addCriterion("upload_over is null");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameIsNotNull() {
-            addCriterion("shop_name is not null");
+        public Criteria andUploadOverIsNotNull() {
+            addCriterion("upload_over is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameEqualTo(String value) {
-            addCriterion("shop_name =", value, "shopName");
+        public Criteria andUploadOverEqualTo(Byte value) {
+            addCriterion("upload_over =", value, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameNotEqualTo(String value) {
-            addCriterion("shop_name <>", value, "shopName");
+        public Criteria andUploadOverNotEqualTo(Byte value) {
+            addCriterion("upload_over <>", value, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameGreaterThan(String value) {
-            addCriterion("shop_name >", value, "shopName");
+        public Criteria andUploadOverGreaterThan(Byte value) {
+            addCriterion("upload_over >", value, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameGreaterThanOrEqualTo(String value) {
-            addCriterion("shop_name >=", value, "shopName");
+        public Criteria andUploadOverGreaterThanOrEqualTo(Byte value) {
+            addCriterion("upload_over >=", value, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameLessThan(String value) {
-            addCriterion("shop_name <", value, "shopName");
+        public Criteria andUploadOverLessThan(Byte value) {
+            addCriterion("upload_over <", value, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameLessThanOrEqualTo(String value) {
-            addCriterion("shop_name <=", value, "shopName");
+        public Criteria andUploadOverLessThanOrEqualTo(Byte value) {
+            addCriterion("upload_over <=", value, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameLike(String value) {
-            addCriterion("shop_name like", value, "shopName");
+        public Criteria andUploadOverIn(List<Byte> values) {
+            addCriterion("upload_over in", values, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameNotLike(String value) {
-            addCriterion("shop_name not like", value, "shopName");
+        public Criteria andUploadOverNotIn(List<Byte> values) {
+            addCriterion("upload_over not in", values, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameIn(List<String> values) {
-            addCriterion("shop_name in", values, "shopName");
+        public Criteria andUploadOverBetween(Byte value1, Byte value2) {
+            addCriterion("upload_over between", value1, value2, "uploadOver");
             return (Criteria) this;
         }
 
-        public Criteria andShopNameNotIn(List<String> values) {
-            addCriterion("shop_name not in", values, "shopName");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopNameBetween(String value1, String value2) {
-            addCriterion("shop_name between", value1, value2, "shopName");
-            return (Criteria) this;
-        }
-
-        public Criteria andShopNameNotBetween(String value1, String value2) {
-            addCriterion("shop_name not between", value1, value2, "shopName");
+        public Criteria andUploadOverNotBetween(Byte value1, Byte value2) {
+            addCriterion("upload_over not between", value1, value2, "uploadOver");
             return (Criteria) this;
         }
 

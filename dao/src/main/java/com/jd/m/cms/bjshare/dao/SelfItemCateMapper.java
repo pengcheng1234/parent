@@ -4,12 +4,9 @@ import com.jd.m.cms.bjshare.domain.po.SelfItemCate;
 import com.jd.m.cms.bjshare.domain.po.SelfItemCateExample;
 import com.jd.m.cms.bjshare.domain.vo.CodeAndName;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface SelfItemCateMapper {
     int countByExample(SelfItemCateExample example);
 

@@ -7,13 +7,9 @@ public class ShareActivityAdditional {
 
     private Integer activityId;
 
-    private String produceClassify;
-
-    private String produceClassifyCn;
-
     private Byte type;
 
-    private String shopName;
+    private Byte uploadOver;
 
     private String reserve1;
 
@@ -41,22 +37,6 @@ public class ShareActivityAdditional {
         this.activityId = activityId;
     }
 
-    public String getProduceClassify() {
-        return produceClassify;
-    }
-
-    public void setProduceClassify(String produceClassify) {
-        this.produceClassify = produceClassify == null ? null : produceClassify.trim();
-    }
-
-    public String getProduceClassifyCn() {
-        return produceClassifyCn;
-    }
-
-    public void setProduceClassifyCn(String produceClassifyCn) {
-        this.produceClassifyCn = produceClassifyCn == null ? null : produceClassifyCn.trim();
-    }
-
     public Byte getType() {
         return type;
     }
@@ -65,12 +45,12 @@ public class ShareActivityAdditional {
         this.type = type;
     }
 
-    public String getShopName() {
-        return shopName;
+    public Byte getUploadOver() {
+        return uploadOver;
     }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName == null ? null : shopName.trim();
+    public void setUploadOver(Byte uploadOver) {
+        this.uploadOver = uploadOver;
     }
 
     public String getReserve1() {
